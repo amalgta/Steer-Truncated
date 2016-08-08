@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources >
+	<string
+        name="app_name">Steer</string>
+    <string name="Mouse">Steer</string>
+    <string name="Mirror">Mirror</string>
+    <string name="Presentation">Presentation</string>
+    <string name="EasyMode">Easy Mode</string>
+    <string name="Browser">Browser</string>
+    <string name="ip">I.P Address</string>
+	<string
+        name="Shortcuts">Shortcuts</string>
+	<string
+        name="About">About</string>
+	<string
+        name="Media">Media</string>
+	<string
+        name="Scan">Scan</string>
+	<string
+        name="Donate">Donate</string>
+	<string
+        name="text_keyboard">Keyboard</string>
+	<string
+        name="text_settings">Settings</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+		<string
+            name="text_get_server">Get server</string>
+	<string
+        name="text_help">Help</string>
+	<string
+        name="text_file_explorer">File explorer</string>
+	<string
+        name="text_refresh">Refresh</string>
+	<string
+        name="text_explore_roots">Return to Root</string>
+    <string
+            name="ver">Steer</string>
+	<string
+        name="text_don">Do you find this application useful \?\n\nIf you like my app , you can show your support with a donation :)\nThanks a lot for your  interest  in my app.</string>
+    <string name="Mail">Mail Me :)</string>
+    <string name="dev">Developed by AruLNadhaN</string>
+    <string name="con">For Translation  &amp; Support Contact </string>
+	<string
+        name="text_help_description">Description:</string>
+	<string
+        name="text_help_usage">Usage:</string>
+    <string
+        name="features">Features:</string>
+    <string name="features_text">- Mouse control \n - Keyboard control\n - Secure (password) connection\n - Screen capture \n - File explorer (view directories and launch files)\n - Presentation \n - Media (Compatible with VLC)\n - Shortcuts (does copy,paste,undo)\n - Browser (Controls browser)</string>
+	<string
+        name="text_help_setup">Setup Guide:</string>
+	<string
+        name="text_help_ts">Troubleshoot:</string>
+    <string
+            name="server"><u>In PC</u></string>
+    <string
+        name="Down">\nYou can Download the server from here \n<a href="www.arulnadhan.me/remoteit.html">www.arulnadhan.me/remoteit.html</a></string>
+
+    <string name="client"><u>\nIn Client(Android Phone)</u></string>
+
+    <string name="site"><u>\n<a href="www.arulnadhan.me">www.arulnadhan.me</a></u></string>
+
+    <string
+        name="text_help_description_content">Use your phone as a remote control device for your computer over Wifi and Bluetooth !</string>
+    <string
+            name="text_help_server_content">1.Install the server \n2.Make sure the server is running </string>
+	<string
+        name="text_help_setup_content">1.Press connections\n2.Create a Connection either Wi-Fi or Bluetooth\n3.Choose a name as you like :P \n4.The Default password (remote) has been set.If you want to change it.Do the changes in both the Client  &amp; Server.\n5.If you created a Wifi Connection,You need to find your computer IP address. It will be located in the icon tray
+bottom right of the screen. Once you have it type it in. It should look something like this (192.168.x.x)\n6.If you created a Bluetooth Connection,Select the Bluetooth Address of your PC by scanning it\n7.Save your Connection\n8.Long press your Connection and select use\n9.After that Choose any feature &amp; Use IT </string>
+    <string name="ts1"><u>Connection refused or server unaccessible</u></string>
+	<string
+        name="text_help_ts1_content">
+		* Recheck the IP Address entered in the Connection.\n* Check whether the Wifi or Bluetooth server is running from the Server App\n* Make sure you open your Network and Sharing Center, and then change your network from "Public Network" to "Home Network"\n*Try resetting computers IP config at command prompt ipconfig /release &amp; ipconfig /renew\n* Use a Static IP, To pick an IP address, you have to make sure that the first three sections of the number are the same as your computer\'s IP address. (That\'s the number you put in the "IP Address" part on your phone.) So, if your computer\'s IP address is 192.168.2.5, then you should pick something like 192.168.2.12. After you enter the static IP address, you can save the connection.\</string>
+    <string name="ts2"><u>Media, Shortcuts, Browser are not Working</u> </string>
+    <string name="text_help_ts2_content"> Open the server App and Remove the Tick from Force disable unicode windows alt trick\n</string>
+   <string
+       name="bug">For Reporting Bugs &amp; Contributing Contact the Dev in the About Menu! \n</string>
+    <string
+      name="ts3"><u>Connection is Unauthenticated</u> </string>
+    <string name="text_help_ts3_content">1.If the connection is unauthenticated. Then check the passwords entered in both the server &amp; the Client.\n</string>
+	<string
+        name="text_help_usage_content">* Press, drag and hold the screen to move the mouse.\n* To use the mouse wheel, slide the right part of the screen (up and down).\n* Enable screen capture in the settings menu.\n* After that Explore &amp; Use IT :P</string>
+	<string
+        name="text_connection">Connection</string>
+	<string
+        name="text_connections">Connections</string>
+	<string
+        name="text_control">Control</string>
+	<string
+        name="text_advanced_control">Advanced control</string>
+	<string
+        name="text_sensitivity">Sensitivity</string>
+	<string
+        name="text_acceleration">Acceleration</string>
+	<string
+        name="text_buttons_size">Buttons size</string>
+	<string
+        name="text_wheel_bar_width">Wheel bar width</string>
+	<string
+        name="text_click_delay">Click delay</string>
+	<string
+        name="text_hold_delay">Hold delay</string>
+	<string
+        name="text_immobile_distance">Immobile distance</string>
+	<string
+        name="text_feedback">Feedback</string>
+	<string
+        name="text_sound">Sound</string>
+	<string
+        name="text_vibration">Vibration</string>
+	<string
+        name="text_screen_capture">Screen capture</string>
+	<string
+        name="text_advanced_screen_capture">Advanced screen capture</string>
+	<string
+        name="text_capture_enabled">Capture enabled</string>
+	<string
+        name="text_capture_format">Capture format</string>
+    <string-array
+        name="screenCapture_format_id">
+        <item>jpg</item>
+        <item>png</item>
+    </string-array>
+    <string-array
+        name="screenCapture_format_name">
+        <item>JPG</item>
+        <item>PNG</item>
+    </string-array>
+    <string-array name="screenCapture_scaling">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="screenCapture_zoom_id">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="screenCapture_zoom_name">
+        <item>1x</item>
+        <item>2x</item>
+        <item>3x</item>
+        <item>4x</item>
+        <item>5x</item>
+    </string-array>
+    <string-array name="screenCapture_fps_name">
+        <item>Max</item>
+        <item>4 FPS</item>
+        <item>2 FPS</item>
+        <item>1 FPS</item>
+        <item>&#189; FPS</item>
+        <item>&#188; FPS</item>
+    </string-array>
+    <string-array name="connection">
+        <item>Wi-Fi</item>
+        <item>Bluetooth</item>
+    </string-array>
+    <string-array name="screenCapture_fps_id">
+        <item>10</item>
+        <item>250</item>
+        <item>500</item>
+        <item>1000</item>
+        <item>2000</item>
+        <item>5000</item>
+    </string-array>
+	<string
+        name="text_cursor_enabled">Cursor enabled</string>
+	<string
+        name="text_cursor_size">Cursor size</string>
+	<string
+        name="text_miscellaneous">Miscellaneous</string>
+	<string
+        name="text_fullscreen">Fullscreen</string>
+	<string
+        name="text_keep_screen_on">Keep screen on</string>
+	<string
+        name="text_debug">Debug</string>
+	<string
+        name="home">Home</string>
+	<string
+        name="text_first_run">First run</string>
+	<string
+        name="text_reset_preferences">Reset preferences</string>
+	<string
+        name="text_connection_established">Connection established</string>
+	<string
+        name="text_connection_closed">Connection closed</string>
+	<string
+        name="text_connection_refused">Connection refused or server unaccessible. For more info read help.</string>
+	<string
+        name="text_illegal_connection_parameter">Illegal connection parameter</string>
+	<string
+        name="text_authentificated">Authenticated</string>
+	<string
+        name="text_not_authentificated">Not authenticated (wrong password)</string>
+	<string
+        name="text_bluetooth_not_available_version">Bluetooth is not available on your phone (only Android 2.0+)</string>
+	<string
+        name="text_bluetooth_not_available">Bluetooth is not available</string>
+	<string
+        name="text_bluetooth_not_enabled">Bluetooth is not enabled</string>
+	<string
+        name="text_bluetooth_remote_device_not_found">Remote bluetooth device not found</string>
+	<string
+        name="text_bluetooth_can_not_connect">Can not connect to remote bluetooth device</string>
+	<string
+        name="text_no_connection">No connections.\nPress the button to add a new one!</string>
+	<string
+        name="text_no_connection_selected">No connection selected\nPress the \"Menu\" button\nSelect \"Connections\"</string>
+	<string
+        name="text_bluetooth_discovery_started">Bluetooth discovery started</string>
+	<string
+        name="text_bluetooth_discovery_finished">Bluetooth discovery finished</string>
+	<string
+        name="text_bluetooth_device_not_paired">Bluetooth device not paired\nYou should pair it manually</string>
+	<string
+        name="text_yes">Yes</string>
+	<string
+        name="text_no">No</string>
+	<string
+        name="text_ok">OK</string>
+	<string
+        name="text_send">Send</string>
+	<string
+        name="text_new">New</string>
+	<string
+        name="text_connection_type">Connection type</string>
+    <string-array
+        name="connection_action_name">
+        <item>Use</item>
+        <item>Edit</item>
+        <item>Remove</item>
+    </string-array>
+    <string-array
+        name="menus">
+        <item>Circular</item>
+        <item>Floater</item>
+    </string-array>
+    <string-array
+        name="menus_text">
+        <item>Circular</item>
+        <item>Floater</item>
+    </string-array>
+	<string
+        name="menus_title">Select Menu</string>
+	<string
+        name="text_wifi">Wifi</string>
+	<string
+        name="text_bluetooth">Bluetooth</string>
+	<string
+        name="text_bluetooth_devices">Bluetooth devices</string>
+	<string
+        name="text_name">Name : </string>
+	<string
+        name="text_password">Password : </string>
+	<string
+        name="text_host">IP Address : </string>
+	<string
+        name="text_port">Port : </string>
+	<string
+        name="text_address">Address : </string>
+	<string
+        name="text_save">Save</string>
+	<string
+        name="tip">You can find the IP Address in the server application</string>
+	<string
+        name="text_new_connection">New connection</string>
+	<string
+        name="text_hint_host">192.168.x.x</string>
+    <string name="text_screen_capture_zoom">Zoom Level</string>
+    <string name="text_screen_capture_fps">Frames Per Second</string>
+    <string name="text_hint_debug">Put extra information in the catlog</string>
+    <string name="text_screen_capture_scale">Scaling</string>
+    <string name="text_useEditText">Use a Text Field</string>
+    <string name="text_backspace">BS</string>
+    <string-array name="orientations">
+        <item >0</item>
+        <item >1</item>
+        <item >2</item>
+    </string-array>
+    <string-array name="text_orientations">
+        <item >Automatic</item>
+        <item >Portrait</item>
+        <item >Landscape</item>
+    </string-array>
+    <string name="text_orientation">Set Screen Orientation</string>
+    <string name="text_cancel">Cancel</string>
+    <string name="text_remove">Remove</string>
+    <string name="text_edit">Edit</string>
+
+    <!--  Drawer Menu Items  -->
+    <string name="drawer_text">Steer</string>
+
+    <string name="ns_menu_main_header">Choose iT</string>
+    <string name="ns_menu_main_header2">Steer</string>
+
+    <string name="ns_menu_open">Steer Menu</string>
+    <string name="ns_menu_close">Steer</string>
+    <string name="todo">TODO</string>
+
+    <!--Media-->
+    <string name="play">Play</string>
+    <string name="full">Full Screen</string>
+    <string name="prev">Previous</string>
+    <string name="next">Next</string>
+    <string name="stop">Stop</string>
+    <string name="zoom">Zoom</string>
+    <string name="repeat">Repeat</string>
+    <string name="mute">Mute</string>
+    <string name="shuffle">Shuffle</string>
+
+    <!--Shortcuts-->
+    <string name="copy">Copy</string>
+    <string name="paste">Paste</string>
+    <string name="cut">Cut</string>
+    <string name="find">Find</string>
+    <string name="undo">Undo</string>
+    <string name="all">Select All</string>
+
+    <!--Presentation-->
+    <string name="ppt_start">Start Presentation</string>
+    <string name="ppt_stop">Stop Presentation</string>
+    <string name="ppt_pen">Pen</string>
+    <string name="ppt_laser">Laser</string>
+
+    <!--Browser-->
+    <string name="Bookmark">Bookmark</string>
+    <string name="Download">Download</string>
+    <string name="Exit">Exit</string>
+    <string name="Print">Print</string>
+    <string name="New_Tab">New Tab</string>
+    <string name="Refresh">Refresh</string>
+    <string name="Switch_Tab">Switch Tab</string>
+    <string name="Save">Save</string>
+    <string name="History">History</string>
+
+    <!--Dialogs-->
+    <string name="Unlock"> Unlock this Feature</string>
+
+    <string name="Unlock_string">To Unlock this Feature, Share this App on facebook or Purchase Steer Pro here</string>
+    <string name="Unlock_share">Share on Facebook!</string>
+    <string name="Unlock_buy">Buy Steer Pro!</string>
+
+
+    <!--Sharing-->
+
+    <string name="text_home">This is just example of using <b>Simple Social Sharing</b> project\n\nYou can see right design of sharing here - <a href="">http://www.androidpatterns.com/uap_pattern/share-button</a></string>
+    <!-- Facebook events -->
+    <string name="toast_facebook_auth_success">Facebook authentication is successful</string>
+    <string name="toast_facebook_auth_fail">Error was occurred during Facebook authentication</string>
+    <string name="facebook_post_published">Posted to Facebook successfully</string>
+    <string name="facebook_post_publishing_failed">Post publishing was failed</string>
+    <string name="facebook_logged_out">You are logged out</string>
+    <!-- Twitter events -->
+    <string name="toast_twitter_auth_success">Twitter authentication is successful</string>
+    <string name="toast_twitter_auth_fail">Error was occurred during Twitter authentication</string>
+    <string name="twitter_post_published">Tweeted successfully</string>
+    <string name="twitter_post_publishing_failed">Tweet failed</string>
+    <string name="twitter_logged_out">You are logged out</string>
+    <!-- Text and labels -->
+    <string name="share_message_title">Message</string>
+    <string name="button_facebook_post">Post on Facebook</string>
+    <string name="button_facebook_post_image">Share on Facebook</string>
+    <string name="button_twitter_post">Post on Twitter</string>
+    <string name="button_share_facebook">Share on Facebook</string>
+    <string name="button_share_twitter">Share on Twitter</string>
+    <string name="menu_logout">Logout</string>
+    <string name="facebook_app_id">1522463314680715</string>
+</resources>

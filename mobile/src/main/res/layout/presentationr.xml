@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:circle="http://schemas.android.com/apk/res-auto"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <com.styx.steer.Client.View.CircleLayout
+            android:id="@+id/main_circle_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@+id/main_selected_textView"
+            android:layout_gravity="center_horizontal"
+            circle:firstChildPosition="South"
+            circle:isRotating="true"
+            circle:rotateToCenter="true"
+            circle:speed="75">
+
+            <com.styx.steer.Client.View.CircleImageView
+                android:id="@+id/startppt"
+                android:layout_width="@dimen/circle_width"
+                android:layout_height="@dimen/circle_height"
+                android:src="@drawable/ppt_start"
+                circle:name="@string/ppt_start" />
+
+            <com.styx.steer.Client.View.CircleImageView
+                android:id="@+id/pen"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ppt_pen"
+                circle:name="@string/ppt_pen" />
+
+            <com.styx.steer.Client.View.CircleImageView
+                android:id="@+id/stopppt"
+                android:layout_width="@dimen/circle_width"
+                android:layout_height="@dimen/circle_height"
+                android:src="@drawable/ppt_stop"
+                circle:name="@string/ppt_stop" />
+
+            <com.styx.steer.Client.View.CircleImageView
+                android:id="@+id/laser"
+                android:layout_width="@dimen/circle_width"
+                android:layout_height="@dimen/circle_height"
+                android:src="@drawable/ppt_laser"
+                circle:name="@string/ppt_laser" />
+        </com.styx.steer.Client.View.CircleLayout>
+
+        <TextView
+            android:id="@+id/main_selected_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="110dp"
+            android:textColor="@color/ppt"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <com.gc.materialdesign.views.ButtonFloat
+                android:id="@+id/up"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="bottom"
+                android:onClick="up"
+                materialdesign:animate="true"
+                materialdesign:iconDrawable="@drawable/ppt_left"
+                materialdesign:iconSize="100dp" />
+
+            <com.gc.materialdesign.views.ButtonFloat
+                android:id="@+id/down"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="100dp"
+                android:onClick="down"
+                materialdesign:animate="true"
+                materialdesign:iconDrawable="@drawable/ppt_right"
+                materialdesign:iconSize="100dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

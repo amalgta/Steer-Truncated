@@ -1,0 +1,95 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <view
+        android:id="@+id/controlView"
+        class="com.styx.steer.Client.View.ControlView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"/>
+
+    <LinearLayout
+        android:id="@+id/clickLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:focusable="false">
+
+		<view
+			android:id="@+id/leftClickView"
+            class="com.styx.steer.Client.View.ClickView"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
+            android:layout_weight="1"
+            android:background="@color/control"
+            android:focusable="false" />
+
+        <view
+			android:id="@+id/rightClickView"
+            class="com.styx.steer.Client.View.ClickView"
+			android:layout_width="0dp"
+			android:layout_height="fill_parent"
+            android:layout_marginLeft="1dp"
+            android:layout_weight="1"
+            android:background="@color/control"
+            android:focusable="false" />
+        </LinearLayout>
+
+    <com.gc.materialdesign.views.ButtonFloat
+        android:id="@+id/down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:background="@color/control"
+        android:onClick="keyboard"
+        materialdesign:iconDrawable="@drawable/control_keyboard"
+        materialdesign:iconSize="35dp"
+        />
+
+    <LinearLayout
+		android:id="@+id/inputLayout"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginRight="20dp"
+		android:orientation="horizontal"
+		android:visibility="visible"
+        android:weightSum="1">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/textline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Type Here to send!"
+            android:imeOptions="actionSend"
+            app:floatingLabel="highlight"
+            app:primaryColor="@color/control" />
+
+		<Button
+		    android:id="@+id/inputBackspace"
+		    android:layout_width="35dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/control_bs"
+		    />
+		<Button
+		    android:id="@+id/inputSend"
+		    android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:background="@drawable/control_send"
+		    />
+		</LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="460dp"
+        android:layout_gravity="right"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/dot"/>
+
+</FrameLayout>

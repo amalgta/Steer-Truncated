@@ -1,0 +1,92 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:circle="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <com.styx.steer.Client.View.CircleLayout
+        android:id="@+id/main_circle_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/main_selected_textView"
+        android:layout_gravity="center_horizontal"
+        circle:firstChildPosition="South"
+        circle:isRotating="true"
+        circle:rotateToCenter="true"
+        circle:speed="75" >
+
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/Bookmark"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/browser_bookmark"
+            circle:name="@string/Bookmark" />
+
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/Download"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/browser_download"
+            circle:name="@string/Download" />
+
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/Exit"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/browser_exit"
+            circle:name="@string/Exit" />
+
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/History"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/browser_history"
+            circle:name="@string/History" />
+
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/New_Tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/browser_newtab"
+            circle:name="@string/New_Tab" />
+
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/Refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/browser_refresh"
+            circle:name="@string/Refresh" />
+
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/Save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/browser_save"
+            circle:name="@string/Save" />
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/Print"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/browser_print"
+            circle:name="@string/Print" />
+
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/Next_Tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/browser_switchtab"
+            circle:name="@string/Switch_Tab" />
+
+    </com.styx.steer.Client.View.CircleLayout>
+
+    <TextView
+        android:id="@+id/main_selected_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:textColor="@color/myPrimaryDarkColor"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

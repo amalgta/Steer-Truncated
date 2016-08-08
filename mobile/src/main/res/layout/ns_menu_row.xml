@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ns_menu_row"
+        android:layout_width="251dp"
+        android:layout_height="78dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/menurow_title"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="0.90"
+            android:drawableLeft="@drawable/home_main"
+            android:gravity="center_vertical"
+            android:textColor="@color/myTextPrimaryColor"/>
+
+</LinearLayout>
+
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--android:id="@+id/ns_menu_row"-->
+<!--android:layout_width="251dp"-->
+<!--android:layout_height="78dp"-->
+<!--android:orientation="horizontal" >-->
+<!--<ImageView-->
+    <!--android:id="@+id/menurow_icon"-->
+    <!--android:src="@drawable/ic_launcher" />-->
+<!--</LinearLayout>-->
+   <!--   
+           <ImageView
+            android:id="@+id/menurow_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:src="@drawable/ic_launcher" />
+            
+   <View
+        android:layout_width="249dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/row" />-->

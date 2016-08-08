@@ -1,0 +1,11 @@
+    <menu xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:Steer="http://schemas.android.com/apk/res-auto">
+        
+        <!--<item android:id="@+id/action_refresh" android:icon="@drawable/action_refresh" -->
+              <!--Steer:showAsAction="always"-->
+            <!--android:title="@string/text_refresh"></item>-->
+        <item android:id="@+id/action_explore_roots" 
+            android:icon="@drawable/file_return"
+            Steer:showAsAction="always"
+              android:title="@string/text_explore_roots"></item>
+    </menu>

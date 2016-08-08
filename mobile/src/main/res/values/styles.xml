@@ -1,0 +1,80 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/myPrimaryColor</item>
+        <item name="colorPrimaryDark">@color/myPrimaryDarkColor</item>
+        <item name="colorAccent">@color/myAccentColor</item>
+        <item name="android:textColorPrimary">@color/myTextPrimaryColor</item>
+        <item name="android:textColor">@color/myTextPrimaryColor</item>
+        <item name="android:textColorSecondary">@color/mySecondary_text</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <item name="android:windowBackground">@color/background</item>
+		<item name="windowActionBar">false</item>
+    </style>
+
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@color/icons</item>
+    </style>
+
+    <style name="Settings" parent="AppTheme">
+        <item name="android:textColorPrimary">@color/myAccentColor</item>
+        <item name="android:textColorSecondary">@color/myAccentColor</item>
+        <item name="android:textColorTertiary">@color/myAccentColor</item>
+        <item name="android:textColor">@color/mySecondary_text</item>
+        <item name="android:divider">@color/myAccentColor</item>
+    </style>
+
+    <style name="ToolBarStyle" parent="">
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+    </style>
+
+    <style name="Abt" parent="">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!--For Categories-->
+    <style name="connections" parent="AppTheme">
+        <item name="colorPrimary">@color/connections</item>
+        <item name="colorPrimaryDark">@color/connectionsd</item>
+    </style>
+
+    <style name="control" parent="AppTheme">
+        <item name="colorPrimary">@color/control</item>
+        <item name="colorPrimaryDark">@color/controld</item>
+    </style>
+
+    <style name="file" parent="AppTheme">
+        <item name="colorPrimary">@color/file</item>
+        <item name="colorPrimaryDark">@color/filed</item>
+    </style>
+
+    <style name="ppt" parent="AppTheme">
+        <item name="colorPrimary">@color/ppt</item>
+        <item name="colorPrimaryDark">@color/pptd</item>
+    </style>
+
+    <style name="easymode" parent="AppTheme">
+        <item name="colorPrimary">@color/ppt</item>
+        <item name="colorPrimaryDark">@color/pptd</item>
+    </style>
+
+    <style name="media" parent="AppTheme">
+        <item name="colorPrimary">@color/media</item>
+        <item name="colorPrimaryDark">@color/mediad</item>
+    </style>
+
+    <style name="shortcuts" parent="AppTheme">
+        <item name="colorPrimary">@color/shorcuts</item>
+        <item name="colorPrimaryDark">@color/shorcutsd</item>
+    </style>
+
+    <style name="browser" parent="AppTheme">
+        <item name="colorPrimary">@color/browser</item>
+        <item name="colorPrimaryDark">@color/browserd</item>
+    </style>
+
+</resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="ns_menu_items">
+        <item>home</item>
+        <item>text_connections</item>
+        <item>Mouse</item>
+        <item>Mirror</item>
+        <item>text_file_explorer</item>
+        <item>EasyMode</item>
+     </string-array>
+
+    <array name="ns_menu_items_icon">
+        <item>home_main</item>
+        <item>home_connections</item>
+        <item>home_mouse</item>
+        <item>home_mirror</item>
+        <item>home_file</item>
+        <item>home_short</item>
+      </array>
+
+    <array name="ns_menu_items_color">
+        <item>block_blue</item>
+        <item>block_purple</item>
+        <item>block_cyan</item>
+        <item>block_pink</item>
+        <item>block_orange</item>
+        <item>block_red</item>
+    </array>
+
+
+</resources>

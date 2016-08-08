@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\dialog_main_show_amination.xml",
+        "source": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\anim\\dialog_main_show_amination.xml"
+    },
+    {
+        "merged": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\dialog_root_hide_amin.xml",
+        "source": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\anim\\dialog_root_hide_amin.xml"
+    },
+    {
+        "merged": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\snackbar_show_animation.xml",
+        "source": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\anim\\snackbar_show_animation.xml"
+    },
+    {
+        "merged": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\progress_indeterminate_animation.xml",
+        "source": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\anim\\progress_indeterminate_animation.xml"
+    },
+    {
+        "merged": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\dialog_main_hide_amination.xml",
+        "source": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\anim\\dialog_main_hide_amination.xml"
+    },
+    {
+        "merged": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\snackbar_hide_animation.xml",
+        "source": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\anim\\snackbar_hide_animation.xml"
+    },
+    {
+        "merged": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\dialog_root_show_amin.xml",
+        "source": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\anim\\dialog_root_show_amin.xml"
+    }
+]

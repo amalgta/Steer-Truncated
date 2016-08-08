@@ -1,0 +1,93 @@
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory
+		android:title="@string/text_control">
+		<EditTextPreference
+			android:key="control_sensitivity"
+			android:inputType="numberDecimal"
+			android:defaultValue="0.7"
+			android:title="@string/text_sensitivity" />
+		<PreferenceScreen
+			android:title="@string/text_advanced_control">
+			<EditTextPreference
+				android:key="control_acceleration"
+				android:inputType="numberDecimal"
+				android:defaultValue="1.5"
+				android:title="@string/text_acceleration" />
+			<EditTextPreference
+				android:key="buttons_size"
+				android:inputType="numberDecimal"
+				android:defaultValue="50"
+				android:title="@string/text_buttons_size" />
+			<EditTextPreference
+				android:key="wheel_bar_width"
+				android:inputType="numberDecimal"
+				android:defaultValue="50"
+				android:title="@string/text_wheel_bar_width" />
+			<EditTextPreference
+				android:key="control_click_delay"
+				android:inputType="number"
+				android:defaultValue="150"
+				android:title="@string/text_click_delay" />
+			<EditTextPreference
+				android:key="control_hold_delay"
+				android:inputType="number"
+				android:defaultValue="500"
+				android:title="@string/text_hold_delay" />
+			<EditTextPreference
+				android:key="control_immobile_distance"
+				android:inputType="numberDecimal"
+				android:defaultValue="10"
+				android:title="@string/text_immobile_distance" />
+		</PreferenceScreen>
+	</PreferenceCategory>
+	<PreferenceCategory
+		android:title="@string/text_feedback">
+		<CheckBoxPreference
+			android:key="feedback_sound"
+			android:defaultValue="false"
+			android:title="@string/text_sound" />
+		<CheckBoxPreference
+			android:key="feedback_vibration"
+			android:defaultValue="true"
+			android:title="@string/text_vibration" />
+	</PreferenceCategory>
+	<PreferenceCategory
+		android:title="@string/text_miscellaneous">
+		<CheckBoxPreference
+			android:key="keep_screen_on"
+			android:defaultValue="false"
+			android:title="@string/text_keep_screen_on" />
+		<CheckBoxPreference android:key="useEditText" android:defaultValue="false" android:title="@string/text_useEditText" android:summaryOn="Will show a text feld to type in" android:summaryOff="Will take things one letter at a time"/>
+		<ListPreference android:entryValues="@array/menus" android:entries="@array/menus_text" android:title="@string/menus_title" android:defaultValue="Floater" android:key="menus"/>
+	</PreferenceCategory> 
+
+	<PreferenceCategory
+		android:title="@string/text_screen_capture">
+		<CheckBoxPreference
+			android:key="screenCapture_enabled"
+			android:defaultValue="false"
+			android:title="@string/text_capture_enabled" />
+		<PreferenceScreen
+			android:title="@string/text_advanced_screen_capture">
+			<ListPreference
+				android:key="screenCapture_format"
+				android:entries="@array/screenCapture_format_name"
+				android:entryValues="@array/screenCapture_format_id"
+				android:defaultValue="png"
+				android:title="@string/text_capture_format" />
+			<CheckBoxPreference
+				android:key="screenCapture_cursor_enabled"
+				android:defaultValue="true"
+				android:title="@string/text_cursor_enabled" />
+			<EditTextPreference
+				android:key="screenCapture_cursor_size"
+				android:inputType="numberDecimal"
+				android:defaultValue="3"
+				android:title="@string/text_cursor_size" />
+			<ListPreference android:key="screenCapture_zoom" android:title="@string/text_screen_capture_zoom" android:entryValues="@array/screenCapture_zoom_id" android:entries="@array/screenCapture_zoom_name" android:defaultValue="1" android:summary="Lower values may degrade performance!"/>
+			<ListPreference android:key="screenCapture_scale" android:title="@string/text_screen_capture_scale" android:entryValues="@array/screenCapture_scaling" android:entries="@array/screenCapture_scaling" android:defaultValue="1" android:summary="Increase this if the the app crashes after enabling Capture"/>
+			<ListPreference android:entryValues="@array/screenCapture_fps_id" android:key="screenCapture_fps" android:entries="@array/screenCapture_fps_name" android:title="@string/text_screen_capture_fps" android:defaultValue="250"/>
+		</PreferenceScreen>
+	</PreferenceCategory>
+</PreferenceScreen>

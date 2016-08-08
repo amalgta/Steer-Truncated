@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+	<FrameLayout
+        android:id="@+id/framer"
+        android:layout_width="fill_parent"
+        android:layout_height="128dp">
+    <ImageView
+        android:id="@+id/path"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/file_slant"
+        android:visibility="invisible"/>
+    <TextView
+		android:id="@+id/directory"
+		android:layout_width="fill_parent"
+		android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/icons"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+</FrameLayout>
+	<ListView
+		android:id="@+id/files"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+        android:layout_below="@id/framer"
+        android:layout_marginLeft="10dp"
+        android:divider="@null"
+		android:fastScrollEnabled="true" />
+
+    <com.gc.materialdesign.views.ButtonFloat
+            android:id="@+id/search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+            android:layout_marginRight="24dp"
+            android:background="@color/file"
+            android:onClick="Refresh"
+            materialdesign:animate="true"
+            materialdesign:iconDrawable="@drawable/fab_refresh"/>
+	        
+</RelativeLayout>

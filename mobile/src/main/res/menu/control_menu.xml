@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:Steer="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_keyboard"
+          android:icon="@drawable/control_keyboard"
+          android:title="@string/text_keyboard" 
+          Steer:showAsAction="always"
+          android:focusable="false"
+			/>
+</menu>

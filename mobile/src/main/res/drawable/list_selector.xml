@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" android:enterFadeDuration="@android:integer/config_longAnimTime">
+
+    <item
+        android:state_focused="true"
+        android:drawable="@color/myWindowBackground"/>
+
+    <!-- Pressed -->
+    <item
+        android:state_selected="true"
+        android:drawable="@color/myAccentColor" />
+
+</selector>

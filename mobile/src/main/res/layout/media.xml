@@ -1,0 +1,103 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:circle="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <!--<include-->
+        <!--android:id="@+id/toolbar_actionbar"-->
+        <!--layout="@layout/toolbar_default"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"/>-->
+
+    <!--<steerient.View.RevealBackgroundView-->
+        <!--android:id="@+id/vRevealBackground"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_below="@+id/toolbar_actionbar"/>-->
+
+    <com.styx.steer.Client.View.CircleLayout
+        android:id="@+id/main_circle_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/main_selected_textView"
+        android:layout_gravity="center_horizontal"
+        circle:firstChildPosition="South"
+        circle:isRotating="true"
+        circle:rotateToCenter="true"
+        circle:speed="75"
+        >
+
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/media_play"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/media_play"
+            circle:name="@string/play" />
+
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/media_fullscreen"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/media_fullscreen"
+            circle:name="@string/full" />
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/media_stop"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/media_stop"
+            circle:name="@string/stop" />
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/media_next"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/media_next"
+            circle:name="@string/next" />
+
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/media_previous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/media_previous"
+            circle:name="@string/prev" />
+
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/media_zoom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/media_zoom"
+            circle:name="@string/zoom" />
+
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/media_mute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/media_mute"
+            circle:name="@string/mute" />
+
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/media_repeat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/media_repeat"
+            circle:name="@string/repeat" />
+
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/media_shuffle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/media_shuffle"
+            circle:name="@string/shuffle" />
+    </com.styx.steer.Client.View.CircleLayout>
+
+    <TextView
+        android:id="@+id/main_selected_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:textColor="@color/myPrimaryDarkColor"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

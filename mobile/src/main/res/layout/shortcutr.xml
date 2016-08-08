@@ -1,0 +1,72 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:circle="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <com.styx.steer.Client.View.CircleLayout
+        android:id="@+id/main_circle_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/main_selected_textView"
+        android:layout_gravity="center_horizontal"
+        circle:firstChildPosition="South"
+        circle:isRotating="true"
+        circle:rotateToCenter="true"
+        circle:speed="75" >
+
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/short_copy"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/short_copy"
+            circle:name="@string/copy" />
+
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/short_cut"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/short_cut"
+            circle:name="@string/cut" />
+
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/short_find"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/short_find"
+            circle:name="@string/find" />
+
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/short_paste"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/short_paste"
+            circle:name="@string/paste" />
+
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/short_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/short_all"
+            circle:name="@string/all" />
+
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/short_undo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/short_undo"
+            circle:name="@string/undo" />
+
+    </com.styx.steer.Client.View.CircleLayout>
+
+    <TextView
+        android:id="@+id/main_selected_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:textColor="@color/shorcuts"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

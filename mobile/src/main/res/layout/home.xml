@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:circle="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <com.styx.steer.Client.View.CircleLayout
+        android:id="@+id/main_circle_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/main_selected_textView"
+        android:layout_gravity="center_horizontal"
+        circle:firstChildPosition="South"
+        circle:isRotating="true"
+        circle:rotateToCenter="true"
+        circle:speed="75">
+
+
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/connections"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/home_connections"
+            circle:name="@string/text_connection" />
+
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/mouse"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/home_mouse"
+            circle:name="@string/Mouse" />
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/mirror"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/home_mirror"
+            circle:name="@string/Mirror" />
+
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/file_explorer"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/home_file"
+            circle:name="@string/text_file_explorer" />
+
+        <com.styx.steer.Client.View.CircleImageView
+            android:id="@+id/easymode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/home_short"
+            circle:name="@string/EasyMode" />
+
+    </com.styx.steer.Client.View.CircleLayout>
+
+    <TextView
+        android:id="@+id/main_selected_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:textColor="@color/myPrimaryDarkColor"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
