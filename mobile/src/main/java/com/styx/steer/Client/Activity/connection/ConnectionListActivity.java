@@ -198,7 +198,6 @@ public class ConnectionListActivity extends AppCompatActivity {
                 overflow = (ImageView) view.findViewById(R.id.overflow);
             }
         }
-
         class MyMenuItemClickListener implements PopupMenu.OnMenuItemClickListener {
 
             int position;
