@@ -55,6 +55,7 @@ public class CircleLayout extends ViewGroup {
 
     // The runnable of the current rotation
     private FlingRunnable actRunnable = null;
+    private double startAngle;
 
     /**
      * @param context
@@ -79,6 +80,17 @@ public class CircleLayout extends ViewGroup {
     public CircleLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init(attrs);
+    }
+
+    /**
+     * @return The selected quadrant.
+     */
+    private static int getQuadrant(double x, double y) {
+        if (x >= 0) {
+            return y >= 0 ? 1 : 4;
+        } else {
+            return y >= 0 ? 2 : 3;
+        }
     }
 
     /**
@@ -352,19 +364,6 @@ public class CircleLayout extends ViewGroup {
         }
     }
 
-    /**
-     * @return The selected quadrant.
-     */
-    private static int getQuadrant(double x, double y) {
-        if (x >= 0) {
-            return y >= 0 ? 1 : 4;
-        } else {
-            return y >= 0 ? 2 : 3;
-        }
-    }
-
-    private double startAngle;
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (isEnabled()) {
@@ -402,6 +401,88 @@ public class CircleLayout extends ViewGroup {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Rotates the given view to the center of the menu.
+     *
+     * @param view         the view to be rotated to the center
+     * @param fromRunnable if the method is called from the runnable which animates the
+     *                     rotation then it should be true, otherwise false
+     */
+    private void rotateViewToCenter(CircleImageView view, boolean fromRunnable) {
+        if (rotateToCenter) {
+            float velocityTemp = 1;
+            float destAngle = firstChildPos - view.getAngle();
+            float startAngle = 0;
+            int reverser = 1;
+
+            if (destAngle < 0) {
+                destAngle += 360;
+            }
+
+            if (destAngle > 180) {
+                reverser = -1;
+                destAngle = 360 - destAngle;
+            }
+
+            while (startAngle < destAngle) {
+                velocityTemp *= deceleration;
+                startAngle += velocityTemp / speed;
+            }
+
+            CircleLayout.this.post(new FlingRunnable(reverser * velocityTemp,
+                    !fromRunnable));
+        }
+    }
+
+    private int pointToPosition(float x, float y) {
+
+        for (int i = 0; i < getChildCount(); i++) {
+
+            View item = getChildAt(i);
+            if (item.getLeft() < x && item.getRight() > x & item.getTop() < y
+                    && item.getBottom() > y) {
+                return i;
+            }
+
+        }
+        return -1;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.mOnItemClickListener = onItemClickListener;
+    }
+
+    public void setOnItemSelectedListener(
+            OnItemSelectedListener onItemSelectedListener) {
+        this.mOnItemSelectedListener = onItemSelectedListener;
+    }
+
+    public void setOnCenterClickListener(
+            OnCenterClickListener onCenterClickListener) {
+        this.mOnCenterClickListener = onCenterClickListener;
+    }
+
+    public void setOnRotationFinishedListener(
+            OnRotationFinishedListener onRotationFinishedListener) {
+        this.mOnRotationFinishedListener = onRotationFinishedListener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(View view, String name);
+    }
+
+    public interface OnItemSelectedListener {
+        void onItemSelected(View view, String name);
+    }
+
+    public interface OnCenterClickListener {
+        void onCenterClick();
+    }
+
+    public interface OnRotationFinishedListener {
+        void onRotationFinished(View view, String name);
     }
 
     private class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
@@ -492,41 +573,6 @@ public class CircleLayout extends ViewGroup {
     }
 
     /**
-     * Rotates the given view to the center of the menu.
-     *
-     * @param view
-     *            the view to be rotated to the center
-     * @param fromRunnable
-     *            if the method is called from the runnable which animates the
-     *            rotation then it should be true, otherwise false
-     */
-    private void rotateViewToCenter(CircleImageView view, boolean fromRunnable) {
-        if (rotateToCenter) {
-            float velocityTemp = 1;
-            float destAngle = (float) (firstChildPos - view.getAngle());
-            float startAngle = 0;
-            int reverser = 1;
-
-            if (destAngle < 0) {
-                destAngle += 360;
-            }
-
-            if (destAngle > 180) {
-                reverser = -1;
-                destAngle = 360 - destAngle;
-            }
-
-            while (startAngle < destAngle) {
-                velocityTemp *= deceleration;
-                startAngle += velocityTemp / speed;
-            }
-
-            CircleLayout.this.post(new FlingRunnable(reverser * velocityTemp,
-                    !fromRunnable));
-        }
-    }
-
-    /**
      * A {@link Runnable} for animating the menu rotation.
      */
     private class FlingRunnable implements Runnable {
@@ -591,54 +637,5 @@ public class CircleLayout extends ViewGroup {
                 }
             }
         }
-    }
-
-    private int pointToPosition(float x, float y) {
-
-        for (int i = 0; i < getChildCount(); i++) {
-
-            View item = (View) getChildAt(i);
-            if (item.getLeft() < x && item.getRight() > x & item.getTop() < y
-                    && item.getBottom() > y) {
-                return i;
-            }
-
-        }
-        return -1;
-    }
-
-    public interface OnItemClickListener {
-        void onItemClick(View view, String name);
-    }
-
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
-        this.mOnItemClickListener = onItemClickListener;
-    }
-
-    public interface OnItemSelectedListener {
-        void onItemSelected(View view, String name);
-    }
-
-    public void setOnItemSelectedListener(
-            OnItemSelectedListener onItemSelectedListener) {
-        this.mOnItemSelectedListener = onItemSelectedListener;
-    }
-
-    public interface OnCenterClickListener {
-        void onCenterClick();
-    }
-
-    public void setOnCenterClickListener(
-            OnCenterClickListener onCenterClickListener) {
-        this.mOnCenterClickListener = onCenterClickListener;
-    }
-
-    public interface OnRotationFinishedListener {
-        void onRotationFinished(View view, String name);
-    }
-
-    public void setOnRotationFinishedListener(
-            OnRotationFinishedListener onRotationFinishedListener) {
-        this.mOnRotationFinishedListener = onRotationFinishedListener;
     }
 }

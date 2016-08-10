@@ -1,108 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.styx.steer.Client">
 
-
-    <uses-permission	android:name="android.permission.BLUETOOTH"/>
-    <uses-permission    android:name="android.permission.BLUETOOTH_ADMIN"/>
-    <uses-permission    android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission    android:name="android.permission.VIBRATE"/>
-
-    <uses-permission    android:name="android.permission.INTERNET" />
-    <uses-permission    android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="com.styx.steer.Client.App.Steer"
+        android:name=".App.Steer"
         android:allowBackup="true"
         android:icon="@mipmap/app_icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
         tools:overrideLibrary="com.oguzdev.circularfloatingactionmenu.library">
         <meta-data
-        android:name="com.google.android.gms.version"
-        android:value="@integer/google_play_services_version" />
-
-
-        <activity
-            android:name="com.styx.steer.Client.Activity.Tutorial"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name="com.styx.steer.Client.Activity.Home"
+            android:name=".Activity.Tutorial"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".Activity.Home"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-           >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.styx.steer.Client.Activity.ControlActivity"
+            android:name=".Activity.ControlActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/text_control"
-            android:theme="@style/control"
-            />
-
+            android:theme="@style/control" />
         <activity
-            android:name="com.styx.steer.Client.Activity.FileExplorerActivity"
+            android:name=".Activity.FileExplorerActivity"
             android:label="@string/text_file_explorer"
-            android:theme="@style/file"/>
+            android:theme="@style/file" />
         <activity
-            android:name="com.styx.steer.Client.Activity.Presentation"
+            android:name=".Activity.Presentation"
             android:label="@string/Presentation"
             android:screenOrientation="portrait"
             android:theme="@style/ppt" />
         <activity
-            android:name="com.styx.steer.Client.Activity.EasyMode"
+            android:name=".Activity.EasyMode"
             android:label="@string/EasyMode"
             android:screenOrientation="portrait"
             android:theme="@style/easymode" />
         <activity
-            android:name="com.styx.steer.Client.Activity.Media"
+            android:name=".Activity.Media"
             android:label="@string/Media"
             android:screenOrientation="portrait"
             android:theme="@style/media" />
         <activity
-            android:name="com.styx.steer.Client.Activity.Shortcuts"
+            android:name=".Activity.Shortcuts"
             android:label="@string/Shortcuts"
             android:screenOrientation="portrait"
             android:theme="@style/shortcuts" />
         <activity
-            android:name="com.styx.steer.Client.Activity.Browser"
+            android:name=".Activity.Browser"
             android:label="@string/Browser"
             android:screenOrientation="portrait"
-            android:theme="@style/browser"
-            />
+            android:theme="@style/browser" />
         <activity
-            android:name="com.styx.steer.Client.Activity.About"
-            android:label="@string/About"/>
+            android:name=".Activity.About"
+            android:label="@string/About" />
         <activity
-            android:name="com.styx.steer.Client.Activity.SettingsActivity"
+            android:name=".Activity.SettingsActivity"
             android:label="@string/text_settings"
-            android:theme="@style/Settings"/>
-
+            android:theme="@style/Settings" />
         <activity
-            android:name="com.styx.steer.Client.Activity.HelpActivity"
-            android:label="@string/text_help"/>
+            android:name=".Activity.HelpActivity"
+            android:label="@string/text_help" />
         <activity
-            android:name="com.styx.steer.Client.Activity.connection.ConnectionBluetoothEditActivity"
+            android:name=".Activity.connection.ConnectionBluetoothEditActivity"
             android:label="@string/text_bluetooth"
-            android:theme="@style/connections"/>
+            android:theme="@style/connections" />
         <activity
-            android:name="com.styx.steer.Client.Activity.connection.BluetoothDevicesActivity"
+            android:name=".Activity.connection.BluetoothDevicesActivity"
             android:label="@string/text_bluetooth_devices"
-            android:theme="@style/connections"/>
+            android:theme="@style/connections" />
         <activity
-            android:name="com.styx.steer.Client.Activity.connection.ConnectionListActivity"
+            android:name=".Activity.connection.ConnectionListActivity"
             android:label="@string/text_connections"
             android:theme="@style/connections" />
         <activity
-            android:name="com.styx.steer.Client.Activity.connection.ConnectionWifiEditActivity"
+            android:name=".Activity.connection.ConnectionWifiEditActivity"
             android:label="@string/text_wifi"
-            android:theme="@style/connections"/>
-
-
+            android:theme="@style/connections" />
     </application>
+
 </manifest>

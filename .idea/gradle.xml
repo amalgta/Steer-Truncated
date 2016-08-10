@@ -10,7 +10,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/FloatingMenu" />
-            <option value="$PROJECT_DIR$/materialDesign" />
             <option value="$PROJECT_DIR$/mobile" />
             <option value="$PROJECT_DIR$/steerprotocol" />
             <option value="$PROJECT_DIR$/steerserver" />
@@ -20,7 +19,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/FloatingMenu" />
-            <option value="$PROJECT_DIR$/materialDesign" />
             <option value="$PROJECT_DIR$/mobile" />
             <option value="$PROJECT_DIR$/steerprotocol" />
             <option value="$PROJECT_DIR$/steerserver" />

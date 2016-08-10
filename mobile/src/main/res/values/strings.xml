@@ -1,33 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources >
-	<string
-        name="app_name">Steer</string>
+
+    <!-- GTA Additions -->
+    <string name="connection_subtitle">Configure connections to host device</string>
+
+
+    <string name="app_name">Steer</string>
     <string name="Mouse">Steer</string>
     <string name="Mirror">Mirror</string>
     <string name="Presentation">Presentation</string>
     <string name="EasyMode">Easy Mode</string>
     <string name="Browser">Browser</string>
     <string name="ip">I.P Address</string>
-	<string
-        name="Shortcuts">Shortcuts</string>
-	<string
-        name="About">About</string>
-	<string
-        name="Media">Media</string>
-	<string
-        name="Scan">Scan</string>
-	<string
-        name="Donate">Donate</string>
-	<string
-        name="text_keyboard">Keyboard</string>
-	<string
-        name="text_settings">Settings</string>
+    <string name="Shortcuts">Shortcuts</string>
+    <string name="About">About</string>
+    <string name="Media">Media</string>
+    <string name="Scan">Scan</string>
+    <string name="Donate">Donate</string>
+    <string name="text_keyboard">Keyboard</string>
+    <string name="text_settings">Settings</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
-		<string
-            name="text_get_server">Get server</string>
-	<string
-        name="text_help">Help</string>
+    <string name="text_get_server">Get server</string>
+    <string name="text_help">Help</string>
 	<string
         name="text_file_explorer">File explorer</string>
 	<string
@@ -371,4 +366,5 @@ bottom right of the screen. Once you have it type it in. It should look somethin
     <string name="button_share_twitter">Share on Twitter</string>
     <string name="menu_logout">Logout</string>
     <string name="facebook_app_id">1522463314680715</string>
+    <string name="connection" />
 </resources>

@@ -328,46 +328,12 @@ public class FloatingActionMenu {
     }
 
     /**
-     * A simple click listener used by the main action view
+     * A listener to listen open/closed state changes of the Menu
      */
-    public class ActionViewClickListener implements View.OnClickListener {
+    public interface MenuStateChangeListener {
+        void onMenuOpened(FloatingActionMenu menu);
 
-        @Override
-        public void onClick(View v) {
-            toggle(animated);
-        }
-    }
-
-    /**
-     * This runnable calculates sizes of Item views that are added to the menu.
-     */
-    private class ItemViewQueueListener implements Runnable {
-
-        private static final int MAX_TRIES = 10;
-        private Item item;
-        private int tries;
-
-        public ItemViewQueueListener(Item item) {
-            this.item = item;
-            this.tries = 0;
-        }
-
-        @Override
-        public void run() {
-            // Wait until the the view can be measured but do not push too hard.
-            if(item.view.getMeasuredWidth() == 0 && tries < MAX_TRIES) {
-                item.view.post(this);
-                return;
-            }
-            // Measure the size of the item view
-            item.width = item.view.getMeasuredWidth();
-            item.height = item.view.getMeasuredHeight();
-
-            // Revert everything back to normal
-            item.view.setAlpha(1);
-            // Remove the item view from view hierarchy
-            ((ViewGroup) getActivityContentView()).removeView(item.view);
-        }
+        void onMenuClosed(FloatingActionMenu menu);
     }
 
     /**
@@ -388,14 +354,6 @@ public class FloatingActionMenu {
             x = 0;
             y = 0;
         }
-    }
-
-    /**
-     * A listener to listen open/closed state changes of the Menu
-     */
-    public static interface MenuStateChangeListener {
-        public void onMenuOpened(FloatingActionMenu menu);
-        public void onMenuClosed(FloatingActionMenu menu);
     }
 
     /**
@@ -509,6 +467,49 @@ public class FloatingActionMenu {
                     animationHandler,
                     animated,
                     stateChangeListener);
+        }
+    }
+
+    /**
+     * A simple click listener used by the main action view
+     */
+    public class ActionViewClickListener implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            toggle(animated);
+        }
+    }
+
+    /**
+     * This runnable calculates sizes of Item views that are added to the menu.
+     */
+    private class ItemViewQueueListener implements Runnable {
+
+        private static final int MAX_TRIES = 10;
+        private Item item;
+        private int tries;
+
+        public ItemViewQueueListener(Item item) {
+            this.item = item;
+            this.tries = 0;
+        }
+
+        @Override
+        public void run() {
+            // Wait until the the view can be measured but do not push too hard.
+            if (item.view.getMeasuredWidth() == 0 && tries < MAX_TRIES) {
+                item.view.post(this);
+                return;
+            }
+            // Measure the size of the item view
+            item.width = item.view.getMeasuredWidth();
+            item.height = item.view.getMeasuredHeight();
+
+            // Revert everything back to normal
+            item.view.setAlpha(1);
+            // Remove the item view from view hierarchy
+            ((ViewGroup) getActivityContentView()).removeView(item.view);
         }
     }
 }
