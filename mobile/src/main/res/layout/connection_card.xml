@@ -25,7 +25,7 @@
                 android:scaleType="centerCrop" />
 
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/connection_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/connection_thumbnail"
@@ -36,10 +36,10 @@
                 android:textSize="@dimen/connection_title" />
 
             <TextView
-                android:id="@+id/connection_type"
+                android:id="@+id/connection_ip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/title"
+                android:layout_below="@id/connection_name"
                 android:paddingBottom="@dimen/connection_type_padding_bottom"
                 android:paddingLeft="@dimen/connection_title_padding"
                 android:paddingRight="@dimen/connection_title_padding"

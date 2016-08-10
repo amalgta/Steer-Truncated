@@ -90,6 +90,11 @@
             android:name=".Activity.connection.ConnectionListActivity"
             android:label="@string/text_connections"
             android:theme="@style/connections" />
+
+        <activity
+            android:name=".Activity.connection.ConnectionListActivity1"
+            android:label="@string/text_connections"
+            android:theme="@style/connections" />
         <activity
             android:name=".Activity.connection.ConnectionWifiEditActivity"
             android:label="@string/text_wifi"

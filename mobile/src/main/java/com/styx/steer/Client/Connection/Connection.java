@@ -5,31 +5,32 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
-import java.io.IOException;
-import java.io.Serializable;
-
 import com.styx.steer.Client.Activity.connection.ConnectionEditActivity;
 import com.styx.steer.Client.App.Steer;
+import com.styx.steer.Client.R;
 import com.styx.steer.Protocol.SteerConnection;
+
+import java.io.IOException;
+import java.io.Serializable;
 
 
 public abstract class Connection implements Comparable<Connection>, Serializable
 {
-	private static final long serialVersionUID = 1L;
-	
 	public static final int TYPE_COUNT = 2;
-	
 	public static final int WIFI = 0;
 	public static final int BLUETOOTH = 1;
-	
-	private String name;
+    private static final long serialVersionUID = 1L;
+    private String name;
 	private String password;
-	
-	public Connection()
+    private String address;
+    private int thumbnail;
+
+    public Connection()
 	{
 		this.name = "";
 		this.password = SteerConnection.DEFAULT_PASSWORD;
-	}
+        address = "";
+    }
 	
 	public static Connection load(SharedPreferences preferences, ConnectionList list, int position)
 	{
@@ -40,16 +41,21 @@ public abstract class Connection implements Comparable<Connection>, Serializable
 		{
 			case WIFI:
 				connection = ConnectionWifi.load(preferences, position);
-				break;
+                connection.thumbnail = R.drawable.album1;
+                connection.address = ConnectionWifi.load(preferences, position).getHost();
+                break;
 			case BLUETOOTH:
 				connection = ConnectionBluetooth.load(preferences, position);
-				break;
-		}
+                //TO-DO
+                connection.thumbnail = R.drawable.album1;
+                connection.address = ConnectionBluetooth.load(preferences, position).getAddress();
+                break;
+        }
 		
 		connection.name = preferences.getString("connection_" + position + "_name", null);
 		
 		connection.password = preferences.getString("connection_" + position + "_password", null);
-		
+
 		return connection;
 	}
 	
@@ -69,8 +75,17 @@ public abstract class Connection implements Comparable<Connection>, Serializable
 		ConnectionEditActivity.connectionParam = this;
 		context.startActivity(intent);
 	}
-	
-	public String getName()
+
+    //GTA
+    public int getThumbnail() {
+        return thumbnail;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getName()
 	{
 		return name;
 	}
