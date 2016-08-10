@@ -1,10 +1,18 @@
 [
     {
-        "merged": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\sprite_check.png",
-        "source": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\sprite_check.png"
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ic_launcher.png",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ic_launcher.png"
     },
     {
-        "merged": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_launcher.png",
-        "source": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_launcher.png"
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\sprite_check.png",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\sprite_check.png"
+    },
+    {
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/sprite_check.png",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/bundles/debug/res/drawable-hdpi-v4/sprite_check.png"
+    },
+    {
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_launcher.png",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_launcher.png"
     }
 ]

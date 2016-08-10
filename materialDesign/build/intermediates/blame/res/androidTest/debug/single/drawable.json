@@ -1,46 +1,90 @@
 [
     {
-        "merged": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\shadow_down.xml",
-        "source": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable\\shadow_down.xml"
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\shadow_down.xml",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable\\shadow_down.xml"
     },
     {
-        "merged": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\background_switch_ball_uncheck.xml",
-        "source": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable\\background_switch_ball_uncheck.xml"
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\background_switch_ball_uncheck.xml",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable\\background_switch_ball_uncheck.xml"
     },
     {
-        "merged": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\background_progress.xml",
-        "source": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable\\background_progress.xml"
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\background_progress.xml",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable\\background_progress.xml"
     },
     {
-        "merged": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\background_checkbox_check.xml",
-        "source": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable\\background_checkbox_check.xml"
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\background_checkbox_check.xml",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable\\background_checkbox_check.xml"
     },
     {
-        "merged": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\shadow_right.xml",
-        "source": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable\\shadow_right.xml"
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/res/merged/androidTest/debug/drawable/background_button_rectangle.xml",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/bundles/debug/res/drawable/background_button_rectangle.xml"
     },
     {
-        "merged": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\background_button_float.xml",
-        "source": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable\\background_button_float.xml"
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/res/merged/androidTest/debug/drawable/background_checkbox_check.xml",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/bundles/debug/res/drawable/background_checkbox_check.xml"
     },
     {
-        "merged": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\background_transparent.xml",
-        "source": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable\\background_transparent.xml"
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\shadow_right.xml",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable\\shadow_right.xml"
     },
     {
-        "merged": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\background_button.9.png",
-        "source": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable\\background_button.9.png"
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/res/merged/androidTest/debug/drawable/background_switch_ball_uncheck.xml",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/bundles/debug/res/drawable/background_switch_ball_uncheck.xml"
     },
     {
-        "merged": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\background_checkbox.xml",
-        "source": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable\\background_checkbox.xml"
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\background_button_float.xml",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable\\background_button_float.xml"
     },
     {
-        "merged": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\background_checkbox_uncheck.xml",
-        "source": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable\\background_checkbox_uncheck.xml"
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/res/merged/androidTest/debug/drawable/background_button_float.xml",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/bundles/debug/res/drawable/background_button_float.xml"
     },
     {
-        "merged": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\background_button_rectangle.xml",
-        "source": "D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable\\background_button_rectangle.xml"
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\background_transparent.xml",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable\\background_transparent.xml"
+    },
+    {
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/res/merged/androidTest/debug/drawable/shadow_right.xml",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/bundles/debug/res/drawable/shadow_right.xml"
+    },
+    {
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/res/merged/androidTest/debug/drawable/background_progress.xml",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/bundles/debug/res/drawable/background_progress.xml"
+    },
+    {
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/res/merged/androidTest/debug/drawable/background_checkbox_uncheck.xml",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/bundles/debug/res/drawable/background_checkbox_uncheck.xml"
+    },
+    {
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/res/merged/androidTest/debug/drawable/shadow_down.xml",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/bundles/debug/res/drawable/shadow_down.xml"
+    },
+    {
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\background_button.9.png",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable\\background_button.9.png"
+    },
+    {
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/res/merged/androidTest/debug/drawable/background_transparent.xml",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/bundles/debug/res/drawable/background_transparent.xml"
+    },
+    {
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\background_checkbox.xml",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable\\background_checkbox.xml"
+    },
+    {
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/res/merged/androidTest/debug/drawable/background_checkbox.xml",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/bundles/debug/res/drawable/background_checkbox.xml"
+    },
+    {
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\background_checkbox_uncheck.xml",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable\\background_checkbox_uncheck.xml"
+    },
+    {
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/res/merged/androidTest/debug/drawable/background_button.9.png",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/materialDesign/build/intermediates/bundles/debug/res/drawable/background_button.9.png"
+    },
+    {
+        "merged": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\background_button_rectangle.xml",
+        "source": "/home/fly/Documents/Android Studio Projects/Steer/D:\\Develop\\Projects\\Steer\\materialDesign\\build\\intermediates\\bundles\\debug\\res\\drawable\\background_button_rectangle.xml"
     }
 ]

@@ -30,6 +30,5 @@
     <orderEntry type="module" module-name="steerprotocol" exported="" />
     <orderEntry type="library" exported="" name="bluecove-2.1.1" level="project" />
     <orderEntry type="library" exported="" name="steerprotocol" level="project" />
-    <orderEntry type="library" exported="" name="steerserver.steerserver" level="project" />
   </component>
 </module>
