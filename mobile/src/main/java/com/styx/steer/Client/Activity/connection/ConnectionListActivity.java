@@ -5,8 +5,10 @@ import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -24,6 +26,8 @@ import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.bumptech.glide.Glide;
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 import com.styx.steer.Client.App.Steer;
 import com.styx.steer.Client.Connection.Connection;
 import com.styx.steer.Client.Connection.ConnectionList;
@@ -34,7 +38,12 @@ public class ConnectionListActivity extends AppCompatActivity {
     private ConnectionsAdapter adapter;
     private ConnectionList connectionList;
     private Steer mApplication;
+    private Handler mUiHandler = new Handler();
 
+
+    private FloatingActionMenu addConnectionMenu;
+    private FloatingActionButton addWifi;
+    private FloatingActionButton addBluetooth;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +66,45 @@ public class ConnectionListActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        addConnectionMenu = (FloatingActionMenu) findViewById(R.id.menu_red);
+        addWifi = (FloatingActionButton) findViewById(R.id.addWifi);
+        addBluetooth = (FloatingActionButton) findViewById(R.id.addBluetooth);
+
+
+        addConnectionMenu.hideMenuButton(false);
+        addConnectionMenu.setClosedOnTouchOutside(true);
+        int delay = 400;
+        mUiHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                addConnectionMenu.showMenuButton(true);
+            }
+        }, delay);
+        mUiHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Snackbar.make(findViewById(R.id.mandanrisal), "Hello", Snackbar.LENGTH_SHORT).show();
+            }
+        }, 600);
+        addWifi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        addBluetooth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        addConnectionMenu.setOnMenuButtonClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addConnectionMenu.toggle(true);
+            }
+        });
     }
     /**
      * Initializing collapsing toolbar
