@@ -10,24 +10,24 @@
      
                 <ListView
                     android:id="@+id/conn_list"
-                    android:layout_marginTop="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_alignParentLeft="true"
-                    android:divider="@null"
-                    android:layout_below="@+id/toolbar_actionbar" />
+                    android:layout_below="@+id/toolbar_actionbar"
+                    android:layout_marginTop="15dp"
+                    android:divider="@null" />
                 
     <com.gc.materialdesign.views.ButtonFloat
         android:id="@+id/add"
         android:layout_width="@dimen/float_size"
         android:layout_height="@dimen/float_size"
-        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="24dp"
+        android:layout_alignParentRight="true"
         android:layout_marginBottom="40dp"
-        materialdesign:iconDrawable="@drawable/fab_add"
+        android:layout_marginRight="24dp"
         android:background="@color/connections"
         android:onClick="add"
-        materialdesign:animate="true" />
+        materialdesign:animate="true"
+        materialdesign:iconDrawable="@drawable/fab_add1" />
     
 </RelativeLayout>

@@ -1,11 +1,14 @@
 package com.styx.steer.Client.Activity.connection;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -20,9 +23,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.bumptech.glide.Glide;
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 import com.styx.steer.Client.App.Steer;
 import com.styx.steer.Client.Connection.Connection;
 import com.styx.steer.Client.Connection.ConnectionList;
@@ -33,7 +38,12 @@ public class ConnectionListActivity extends AppCompatActivity {
     private ConnectionsAdapter adapter;
     private ConnectionList connectionList;
     private Steer mApplication;
+    private Handler mUiHandler = new Handler();
 
+
+    private FloatingActionMenu addConnectionMenu;
+    private FloatingActionButton addWifi;
+    private FloatingActionButton addBluetooth;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,23 +52,60 @@ public class ConnectionListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         initCollapsingToolbar();
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        mApplication = (Steer) getApplication();
-        connectionList = new ConnectionList(mApplication.getPreferences());
+        mApplication = (Steer) this.getApplication();
+        connectionList = mApplication.getConnections();
         adapter = new ConnectionsAdapter(this, connectionList);
-
+        recyclerView.setAdapter(adapter);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(adapter);
-
+        //adapter = new ConnectionsAdapter(this, connectionList);
         try {
             Glide.with(this).load(R.drawable.cover).into((ImageView) findViewById(R.id.backdrop));
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
 
+        addConnectionMenu = (FloatingActionMenu) findViewById(R.id.menu_red);
+        addWifi = (FloatingActionButton) findViewById(R.id.addWifi);
+        addBluetooth = (FloatingActionButton) findViewById(R.id.addBluetooth);
+
+
+        addConnectionMenu.hideMenuButton(false);
+        addConnectionMenu.setClosedOnTouchOutside(true);
+        int delay = 400;
+        mUiHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                addConnectionMenu.showMenuButton(true);
+            }
+        }, delay);
+        mUiHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Snackbar.make(findViewById(R.id.mandanrisal), "Hello", Snackbar.LENGTH_SHORT).show();
+            }
+        }, 600);
+        addWifi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        addBluetooth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        addConnectionMenu.setOnMenuButtonClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addConnectionMenu.toggle(true);
+            }
+        });
+    }
     /**
      * Initializing collapsing toolbar
      * Will show and hide the toolbar title on scroll
@@ -175,7 +222,7 @@ public class ConnectionListActivity extends AppCompatActivity {
             // inflate menu
             PopupMenu popup = new PopupMenu(mContext, view);
             MenuInflater inflater = popup.getMenuInflater();
-            inflater.inflate(R.menu.connection_menu, popup.getMenu());
+            inflater.inflate(R.menu.connection_overflow, popup.getMenu());
             popup.setOnMenuItemClickListener(new MyMenuItemClickListener(position));
             popup.show();
         }
@@ -198,7 +245,6 @@ public class ConnectionListActivity extends AppCompatActivity {
                 overflow = (ImageView) view.findViewById(R.id.overflow);
             }
         }
-
         class MyMenuItemClickListener implements PopupMenu.OnMenuItemClickListener {
 
             int position;
@@ -211,11 +257,35 @@ public class ConnectionListActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.action_remove:
-                        Toast.makeText(mContext, connectionList.get(position).getName(), Toast.LENGTH_SHORT).show();
-                        connectionList.get(1).setName("ASDSD");
+                        //   Toast.makeText(mContext, connectionList.get(position).getName(), Toast.LENGTH_SHORT).show();
+                        new MaterialDialog.Builder(ConnectionListActivity.this)
+                                .title("Delete")
+                                .content("Remove connection configuration ?")
+                                .positiveText("REMOVE")
+                                .negativeText("CANCEL")
+                                .showListener(new DialogInterface.OnShowListener() {
+                                    @Override
+                                    public void onShow(DialogInterface dialog) {
+                                        connectionList.remove(position);
+                                        connectionList.save();
+                                        adapter.notifyItemRemoved(position);
+                                    }
+                                })
+                                .cancelListener(new DialogInterface.OnCancelListener() {
+                                    @Override
+                                    public void onCancel(DialogInterface dialog) {
+                                    }
+                                })
+                                .dismissListener(new DialogInterface.OnDismissListener() {
+                                    @Override
+                                    public void onDismiss(DialogInterface dialog) {
+                                    }
+                                })
+                                .show();
                         return true;
                     case R.id.action_edit:
-                        Toast.makeText(mContext, "Play next", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(mContext, connectionList.get(0).getName(), Toast.LENGTH_SHORT).show();
+                        //Snackbar.make(findViewById(R.id.test_ID), "Hello Snackbar", Snackbar.LENGTH_LONG).show();
                         return true;
                     default:
                 }
