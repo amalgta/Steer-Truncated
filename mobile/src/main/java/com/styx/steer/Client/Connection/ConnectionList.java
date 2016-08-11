@@ -15,7 +15,7 @@ public class ConnectionList
 	public ConnectionList(SharedPreferences preferences)
 	{
 		this.preferences = preferences;
-		this.connections = new ArrayList<Connection>();
+		this.connections = new ArrayList<>();
 		this.load();
 	}
 	

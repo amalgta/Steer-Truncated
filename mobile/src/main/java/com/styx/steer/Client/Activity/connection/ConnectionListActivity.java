@@ -42,23 +42,21 @@ public class ConnectionListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         initCollapsingToolbar();
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        mApplication = (Steer) getApplication();
-        connectionList = new ConnectionList(mApplication.getPreferences());
+        mApplication = (Steer) this.getApplication();
+        connectionList = mApplication.getConnections();
         adapter = new ConnectionsAdapter(this, connectionList);
-
+        recyclerView.setAdapter(adapter);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(adapter);
-
+        //adapter = new ConnectionsAdapter(this, connectionList);
         try {
             Glide.with(this).load(R.drawable.cover).into((ImageView) findViewById(R.id.backdrop));
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
     /**
      * Initializing collapsing toolbar
      * Will show and hide the toolbar title on scroll
@@ -175,7 +173,7 @@ public class ConnectionListActivity extends AppCompatActivity {
             // inflate menu
             PopupMenu popup = new PopupMenu(mContext, view);
             MenuInflater inflater = popup.getMenuInflater();
-            inflater.inflate(R.menu.connection_menu, popup.getMenu());
+            inflater.inflate(R.menu.connection_overflow, popup.getMenu());
             popup.setOnMenuItemClickListener(new MyMenuItemClickListener(position));
             popup.show();
         }
@@ -210,11 +208,15 @@ public class ConnectionListActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.action_remove:
-                        Toast.makeText(mContext, connectionList.get(position).getName(), Toast.LENGTH_SHORT).show();
-                        connectionList.get(1).setName("ASDSD");
+                        //   Toast.makeText(mContext, connectionList.get(position).getName(), Toast.LENGTH_SHORT).show();
+                        connectionList.remove(0);
+                        connectionList.save();
+                        adapter.notifyItemRemoved(0);
+                        //  update();
                         return true;
                     case R.id.action_edit:
-                        Toast.makeText(mContext, "Play next", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, connectionList.get(0).getName(), Toast.LENGTH_SHORT).show();
+
                         return true;
                     default:
                 }
