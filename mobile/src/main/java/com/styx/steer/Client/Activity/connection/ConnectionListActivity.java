@@ -1,6 +1,7 @@
 package com.styx.steer.Client.Activity.connection;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -20,8 +21,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.bumptech.glide.Glide;
 import com.styx.steer.Client.App.Steer;
 import com.styx.steer.Client.Connection.Connection;
@@ -209,14 +210,34 @@ public class ConnectionListActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.action_remove:
                         //   Toast.makeText(mContext, connectionList.get(position).getName(), Toast.LENGTH_SHORT).show();
-                        connectionList.remove(0);
-                        connectionList.save();
-                        adapter.notifyItemRemoved(0);
-                        //  update();
+                        new MaterialDialog.Builder(ConnectionListActivity.this)
+                                .title("Delete")
+                                .content("Remove connection configuration ?")
+                                .positiveText("REMOVE")
+                                .negativeText("CANCEL")
+                                .showListener(new DialogInterface.OnShowListener() {
+                                    @Override
+                                    public void onShow(DialogInterface dialog) {
+                                        connectionList.remove(position);
+                                        connectionList.save();
+                                        adapter.notifyItemRemoved(position);
+                                    }
+                                })
+                                .cancelListener(new DialogInterface.OnCancelListener() {
+                                    @Override
+                                    public void onCancel(DialogInterface dialog) {
+                                    }
+                                })
+                                .dismissListener(new DialogInterface.OnDismissListener() {
+                                    @Override
+                                    public void onDismiss(DialogInterface dialog) {
+                                    }
+                                })
+                                .show();
                         return true;
                     case R.id.action_edit:
-                        Toast.makeText(mContext, connectionList.get(0).getName(), Toast.LENGTH_SHORT).show();
-
+                        //Toast.makeText(mContext, connectionList.get(0).getName(), Toast.LENGTH_SHORT).show();
+                        //Snackbar.make(findViewById(R.id.test_ID), "Hello Snackbar", Snackbar.LENGTH_LONG).show();
                         return true;
                     default:
                 }
