@@ -81,12 +81,6 @@ public class ConnectionListActivity extends AppCompatActivity {
                 addConnectionMenu.showMenuButton(true);
             }
         }, delay);
-        mUiHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Snackbar.make(findViewById(R.id.mandanrisal), "Hello", Snackbar.LENGTH_SHORT).show();
-            }
-        }, 600);
         addWifi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
