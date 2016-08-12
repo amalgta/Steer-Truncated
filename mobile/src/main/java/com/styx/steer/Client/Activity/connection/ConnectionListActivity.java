@@ -72,27 +72,37 @@ public class ConnectionListActivity extends AppCompatActivity {
         buttonView.setEnabled(FLAG);
     }
 
-    private void editWifiConnection(final ConnectionWifi editeConnection, int position) {
+    private void editWifiConnection(final ConnectionWifi editedConnection, final int position) {
+        final boolean add = (position == connectionList.getCount());
+        String title, positiveText;
+        if (add) {
+            title = "Add Connection";
+            positiveText = "ADD";
+        } else {
+            title = "Edit Connection";
+            positiveText = "EDIT";
+        }
 
         MaterialDialog dialog = new MaterialDialog.Builder(ConnectionListActivity.this)
-                .title("New Wifi Connection")
+                .title(title)
                 .customView(R.layout.dialog_addwificonnection, true)
-                .positiveText("Add Connection")
+                .positiveText(positiveText)
                 .negativeText(android.R.string.cancel)
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        //addConnectionMenu.toggle(true);
-                        //showToast("Password: " + passwordInput.getText().toString());
-                        dialog.getCustomView().findViewById(R.id.connection_name);
-                        ConnectionWifi c = (ConnectionWifi) connectionList.add(Connection.WIFI);
-                        c.setName(((EditText) dialog.getCustomView().findViewById(R.id.connection_name)).getText().toString());
-                        c.setPassword(((EditText) dialog.getCustomView().findViewById(R.id.connection_password)).getText().toString());
-                        c.setHost(((EditText) dialog.getCustomView().findViewById(R.id.connection_address)).getText().toString());
-                        c.setPort(Integer.parseInt(((EditText) dialog.getCustomView().findViewById(R.id.connection_port)).getText().toString()));
-                        adapter.notifyItemInserted(connectionList.getCount());
-                        //c.setPort(Integer.parseInt(dialog.getCustomView().findViewById(R.id.connection_port).toString()));
-                        // Toast.makeText(getApplicationContext(),(dialog.getCustomView().findViewById(R.id.connection_port)).toString(),Toast.LENGTH_SHORT).show();
+                        editedConnection.setName(((EditText) dialog.getCustomView().findViewById(R.id.connection_name)).getText().toString());
+                        editedConnection.setPassword(((EditText) dialog.getCustomView().findViewById(R.id.connection_password)).getText().toString());
+                        editedConnection.setHost(((EditText) dialog.getCustomView().findViewById(R.id.connection_address)).getText().toString());
+                        editedConnection.setPort(Integer.parseInt(((EditText) dialog.getCustomView().findViewById(R.id.connection_port)).getText().toString()));
+                        if (add) {
+                            connectionList.add(editedConnection);
+                            adapter.notifyItemInserted(connectionList.getCount());
+                            //Daivame porukkane
+                            addConnectionMenu.toggle(true);
+                        } else {
+                            adapter.notifyItemChanged(position);
+                        }
                     }
                 }).build();
         final View positiveAction = dialog.getActionButton(DialogAction.POSITIVE);
@@ -101,6 +111,14 @@ public class ConnectionListActivity extends AppCompatActivity {
         final EditText connection_address = (EditText) dialog.getCustomView().findViewById(R.id.connection_address);
         final EditText connection_port = (EditText) dialog.getCustomView().findViewById(R.id.connection_port);
         final ArrayList<EditText> validateList = new ArrayList<>(Arrays.asList(connectionName, connection_password, connection_address, connection_port));
+        positiveAction.setEnabled(false); // disabled by default
+        if (!add) {
+            connectionName.setText(editedConnection.getName());
+            connection_password.setText(editedConnection.getPassword());
+            connection_address.setText(editedConnection.getHost());
+            connection_port.setText(String.valueOf(editedConnection.getPort()));
+            validate(validateList, positiveAction);
+        }
         connectionName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -169,7 +187,6 @@ public class ConnectionListActivity extends AppCompatActivity {
         MDTintHelper.setTint(checkbox, ContextCompat.getColor(ConnectionListActivity.this, R.color.myAccentColor));
         MDTintHelper.setTint(connection_password, ContextCompat.getColor(ConnectionListActivity.this, R.color.myAccentColor));
         dialog.show();
-        positiveAction.setEnabled(false); // disabled by default
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -219,7 +236,7 @@ public class ConnectionListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(ConnectionListActivity.this, "ASD", Toast.LENGTH_SHORT).show();
-
+                editWifiConnection((ConnectionWifi) connectionList.gtaAdd(Connection.WIFI), connectionList.getCount());
             }
         });
 
@@ -396,8 +413,6 @@ public class ConnectionListActivity extends AppCompatActivity {
                                         connectionList.add(position, removedConnection);
                                         //notifyDataSetChanged();
                                         notifyItemInserted(position);
-
-
                                         Snackbar restoreNotifierSnackbar = Snackbar.make(findViewById(R.id.main_content), removedConnection.getName() + " is restored!" + position, Snackbar.LENGTH_SHORT);
                                         ((TextView) restoreNotifierSnackbar.getView().findViewById(android.support.design.R.id.snackbar_text)).setTextColor(Color.YELLOW);
                                         restoreNotifierSnackbar.show();
@@ -413,8 +428,6 @@ public class ConnectionListActivity extends AppCompatActivity {
                     case R.id.action_edit:
                         final ConnectionWifi editedConnection = (ConnectionWifi) connectionList.get(position);
                         editWifiConnection(editedConnection, position);
-                        editedConnection.setHost("AS");
-                        adapter.notifyItemChanged(position);
                         //Toast.makeText(mContext, connectionList.get(0).getName(), Toast.LENGTH_SHORT).show();
 
                         return true;

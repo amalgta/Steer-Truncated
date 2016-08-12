@@ -28,7 +28,6 @@ public class ConnectionWifi extends Connection
         this.thumbnail = R.drawable.album1;
         //this.address=getHost()+":"+this.port;
     }
-
     public static ConnectionWifi load(SharedPreferences preferences, int position) {
 		ConnectionWifi connection = new ConnectionWifi();
 

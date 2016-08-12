@@ -57,7 +57,31 @@ public class ConnectionList
 	{
 		Collections.sort(this.connections);
 	}
-	
+
+	/* Change Immediately*/
+	public Connection gtaAdd(int type) {
+		Connection connection = null;
+
+		switch (type) {
+			case Connection.WIFI:
+				connection = new ConnectionWifi();
+				break;
+			case Connection.BLUETOOTH:
+				connection = new ConnectionBluetooth();
+				break;
+		}
+/*
+		this.connections.add(connection);
+
+		if (this.connections.size() == 1)
+		{
+			this.used = connection;
+		}
+*/
+		return connection;
+	}
+
+
 	public Connection add(int type)
 	{
 		Connection connection = null;
