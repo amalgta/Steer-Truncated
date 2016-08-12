@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:layout_toLeftOf="@+id/editText2"
+            android:layout_toLeftOf="@+id/connection_port"
             android:layout_weight="1"
             android:hint="192.168."
             android:imeOptions="actionNext"
@@ -77,7 +77,7 @@
             android:textSize="@dimen/customEntry" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/connection_port"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"

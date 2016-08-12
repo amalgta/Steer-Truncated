@@ -33,7 +33,6 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -47,6 +46,9 @@ import com.styx.steer.Client.Connection.ConnectionList;
 import com.styx.steer.Client.Connection.ConnectionWifi;
 import com.styx.steer.Client.R;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class ConnectionListActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ConnectionsAdapter adapter;
@@ -59,6 +61,110 @@ public class ConnectionListActivity extends AppCompatActivity {
     private FloatingActionButton addWifi;
     private FloatingActionButton addBluetooth;
 
+    private void validate(ArrayList<EditText> validateList, View buttonView) {
+        boolean FLAG = true;
+        for (EditText currentText : validateList) {
+            if (!(currentText.getText().toString().trim().length() > 0)) {
+                FLAG = false;
+                break;
+            }
+        }
+        buttonView.setEnabled(FLAG);
+    }
+
+    private void editWifiConnection(ConnectionWifi editedConnection) {
+        MaterialDialog dialog = new MaterialDialog.Builder(ConnectionListActivity.this)
+                .title("New Wifi Connection")
+                .customView(R.layout.dialog_addwificonnection, true)
+                .positiveText("Add Connection")
+                .negativeText(android.R.string.cancel)
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        addConnectionMenu.toggle(true);
+                        //showToast("Password: " + passwordInput.getText().toString());
+                    }
+                }).build();
+        final View positiveAction = dialog.getActionButton(DialogAction.POSITIVE);
+        final EditText connectionName = (EditText) dialog.getCustomView().findViewById(R.id.connection_name);
+        final EditText connection_password = (EditText) dialog.getCustomView().findViewById(R.id.connection_password);
+        final EditText connection_address = (EditText) dialog.getCustomView().findViewById(R.id.connection_address);
+        final EditText connection_port = (EditText) dialog.getCustomView().findViewById(R.id.connection_port);
+        final ArrayList<EditText> validateList = new ArrayList<>(Arrays.asList(connectionName, connection_password, connection_address, connection_port));
+        connectionName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                validate(validateList, positiveAction);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+        connection_password.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                validate(validateList, positiveAction);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+        connection_address.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                validate(validateList, positiveAction);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+        connection_port.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                validate(validateList, positiveAction);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+
+        CheckBox checkbox = (CheckBox) dialog.getCustomView().findViewById(R.id.showPassword);
+        checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                connection_password.setInputType(!isChecked ? InputType.TYPE_TEXT_VARIATION_PASSWORD : InputType.TYPE_CLASS_TEXT);
+                connection_password.setTransformationMethod(!isChecked ? PasswordTransformationMethod.getInstance() : null);
+                connection_password.setSelection(connection_password.getText().length());
+            }
+        });
+
+        MDTintHelper.setTint(checkbox, ContextCompat.getColor(ConnectionListActivity.this, R.color.myAccentColor));
+        MDTintHelper.setTint(connection_password, ContextCompat.getColor(ConnectionListActivity.this, R.color.myAccentColor));
+
+        dialog.show();
+        positiveAction.setEnabled(false); // disabled by default
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,54 +212,8 @@ public class ConnectionListActivity extends AppCompatActivity {
         addWifi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ConnectionListActivity.this, "ASD", Toast.LENGTH_SHORT).show();
-                final EditText passwordInput;
-                final EditText connectionName;
-                final View positiveAction;
-                MaterialDialog dialog = new MaterialDialog.Builder(ConnectionListActivity.this)
-                        .title("New Wifi Connection")
-                        .customView(R.layout.dialog_addwificonnection, true)
-                        .positiveText("connect")
-                        .negativeText(android.R.string.cancel)
-                        .onPositive(new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                addConnectionMenu.toggle(true);
-                                //showToast("Password: " + passwordInput.getText().toString());
-                            }
-                        }).build();
-                connectionName = (EditText) dialog.getCustomView().findViewById(R.id.connection_name);
-                positiveAction = dialog.getActionButton(DialogAction.POSITIVE);
-                //noinspection ConstantConditions
-                passwordInput = (EditText) dialog.getCustomView().findViewById(R.id.connection_password);
-                passwordInput.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    }
+                //Toast.makeText(ConnectionListActivity.this, "ASD", Toast.LENGTH_SHORT).show();
 
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        positiveAction.setEnabled(s.toString().trim().length() > 0);
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                    }
-                });
-                // Toggling the show password CheckBox will mask or unmask the password input EditText
-                CheckBox checkbox = (CheckBox) dialog.getCustomView().findViewById(R.id.showPassword);
-                checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        passwordInput.setInputType(!isChecked ? InputType.TYPE_TEXT_VARIATION_PASSWORD : InputType.TYPE_CLASS_TEXT);
-                        passwordInput.setTransformationMethod(!isChecked ? PasswordTransformationMethod.getInstance() : null);
-                        passwordInput.setSelection(passwordInput.getText().length());
-                    }
-                });
-                MDTintHelper.setTint(checkbox, ContextCompat.getColor(ConnectionListActivity.this, R.color.myAccentColor));
-                MDTintHelper.setTint(passwordInput, ContextCompat.getColor(ConnectionListActivity.this, R.color.myAccentColor));
-                dialog.show();
-                positiveAction.setEnabled(false); // disabled by default
             }
         });
 
@@ -346,6 +406,7 @@ public class ConnectionListActivity extends AppCompatActivity {
                         return true;
                     case R.id.action_edit:
                         final ConnectionWifi editedConnection = (ConnectionWifi) connectionList.get(position);
+                        editWifiConnection(editedConnection);
                         editedConnection.setHost("AS");
                         adapter.notifyItemChanged(position);
                         //Toast.makeText(mContext, connectionList.get(0).getName(), Toast.LENGTH_SHORT).show();
