@@ -72,7 +72,8 @@ public class ConnectionListActivity extends AppCompatActivity {
         buttonView.setEnabled(FLAG);
     }
 
-    private void editWifiConnection(ConnectionWifi editedConnection) {
+    private void editWifiConnection(final ConnectionWifi editeConnection, int position) {
+
         MaterialDialog dialog = new MaterialDialog.Builder(ConnectionListActivity.this)
                 .title("New Wifi Connection")
                 .customView(R.layout.dialog_addwificonnection, true)
@@ -81,8 +82,17 @@ public class ConnectionListActivity extends AppCompatActivity {
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        addConnectionMenu.toggle(true);
+                        //addConnectionMenu.toggle(true);
                         //showToast("Password: " + passwordInput.getText().toString());
+                        dialog.getCustomView().findViewById(R.id.connection_name);
+                        ConnectionWifi c = (ConnectionWifi) connectionList.add(Connection.WIFI);
+                        c.setName(((EditText) dialog.getCustomView().findViewById(R.id.connection_name)).getText().toString());
+                        c.setPassword(((EditText) dialog.getCustomView().findViewById(R.id.connection_password)).getText().toString());
+                        c.setHost(((EditText) dialog.getCustomView().findViewById(R.id.connection_address)).getText().toString());
+                        c.setPort(Integer.parseInt(((EditText) dialog.getCustomView().findViewById(R.id.connection_port)).getText().toString()));
+                        adapter.notifyItemInserted(connectionList.getCount());
+                        //c.setPort(Integer.parseInt(dialog.getCustomView().findViewById(R.id.connection_port).toString()));
+                        // Toast.makeText(getApplicationContext(),(dialog.getCustomView().findViewById(R.id.connection_port)).toString(),Toast.LENGTH_SHORT).show();
                     }
                 }).build();
         final View positiveAction = dialog.getActionButton(DialogAction.POSITIVE);
@@ -147,8 +157,6 @@ public class ConnectionListActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
             }
         });
-
-
         CheckBox checkbox = (CheckBox) dialog.getCustomView().findViewById(R.id.showPassword);
         checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -158,10 +166,8 @@ public class ConnectionListActivity extends AppCompatActivity {
                 connection_password.setSelection(connection_password.getText().length());
             }
         });
-
         MDTintHelper.setTint(checkbox, ContextCompat.getColor(ConnectionListActivity.this, R.color.myAccentColor));
         MDTintHelper.setTint(connection_password, ContextCompat.getColor(ConnectionListActivity.this, R.color.myAccentColor));
-
         dialog.show();
         positiveAction.setEnabled(false); // disabled by default
     }
@@ -406,7 +412,7 @@ public class ConnectionListActivity extends AppCompatActivity {
                         return true;
                     case R.id.action_edit:
                         final ConnectionWifi editedConnection = (ConnectionWifi) connectionList.get(position);
-                        editWifiConnection(editedConnection);
+                        editWifiConnection(editedConnection, position);
                         editedConnection.setHost("AS");
                         adapter.notifyItemChanged(position);
                         //Toast.makeText(mContext, connectionList.get(0).getName(), Toast.LENGTH_SHORT).show();
