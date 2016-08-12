@@ -35,7 +35,7 @@ public class ConnectionList
 			this.used = this.get(position);
 		}
 	}
-	
+
 	public void save()
 	{
 		Editor editor = this.preferences.edit();
@@ -80,6 +80,22 @@ public class ConnectionList
 		}
 		
 		return connection;
+	}
+
+	public Connection add(Connection newConnection) {
+		this.connections.add(newConnection);
+		if (this.connections.size() == 1) {
+			this.used = newConnection;
+		}
+		return newConnection;
+	}
+
+	public Connection add(int position, Connection newConnection) {
+		this.connections.add(position, newConnection);
+		if (this.connections.size() == 1) {
+			this.used = newConnection;
+		}
+		return newConnection;
 	}
 	
 	public void remove(int position)

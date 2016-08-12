@@ -1,38 +1,50 @@
 package com.styx.steer.Client.Activity.connection;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.InputType;
+import android.text.TextWatcher;
+import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.afollestad.materialdialogs.internal.MDTintHelper;
 import com.bumptech.glide.Glide;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.styx.steer.Client.App.Steer;
 import com.styx.steer.Client.Connection.Connection;
 import com.styx.steer.Client.Connection.ConnectionList;
+import com.styx.steer.Client.Connection.ConnectionWifi;
 import com.styx.steer.Client.R;
 
 public class ConnectionListActivity extends AppCompatActivity {
@@ -46,6 +58,7 @@ public class ConnectionListActivity extends AppCompatActivity {
     private FloatingActionMenu addConnectionMenu;
     private FloatingActionButton addWifi;
     private FloatingActionButton addBluetooth;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +66,9 @@ public class ConnectionListActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         initCollapsingToolbar();
+
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+
         mApplication = (Steer) this.getApplication();
         connectionList = mApplication.getConnections();
         adapter = new ConnectionsAdapter(this, connectionList);
@@ -62,18 +77,16 @@ public class ConnectionListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        //adapter = new ConnectionsAdapter(this, connectionList);
         try {
             Glide.with(this).load(R.drawable.cover).into((ImageView) findViewById(R.id.backdrop));
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        /* Floating Action bar Menu */
         addConnectionMenu = (FloatingActionMenu) findViewById(R.id.menu_red);
         addWifi = (FloatingActionButton) findViewById(R.id.addWifi);
         addBluetooth = (FloatingActionButton) findViewById(R.id.addBluetooth);
-
-
         addConnectionMenu.hideMenuButton(false);
         addConnectionMenu.setClosedOnTouchOutside(true);
         int delay = 400;
@@ -83,24 +96,75 @@ public class ConnectionListActivity extends AppCompatActivity {
                 addConnectionMenu.showMenuButton(true);
             }
         }, delay);
-        addWifi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
         addBluetooth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
+
+        addWifi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ConnectionListActivity.this, "ASD", Toast.LENGTH_SHORT).show();
+                final EditText passwordInput;
+                final EditText connectionName;
+                final View positiveAction;
+                MaterialDialog dialog = new MaterialDialog.Builder(ConnectionListActivity.this)
+                        .title("New Wifi Connection")
+                        .customView(R.layout.dialog_addwificonnection, true)
+                        .positiveText("connect")
+                        .negativeText(android.R.string.cancel)
+                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                addConnectionMenu.toggle(true);
+                                //showToast("Password: " + passwordInput.getText().toString());
+                            }
+                        }).build();
+                connectionName = (EditText) dialog.getCustomView().findViewById(R.id.connection_name);
+                positiveAction = dialog.getActionButton(DialogAction.POSITIVE);
+                //noinspection ConstantConditions
+                passwordInput = (EditText) dialog.getCustomView().findViewById(R.id.connection_password);
+                passwordInput.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        positiveAction.setEnabled(s.toString().trim().length() > 0);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                    }
+                });
+                // Toggling the show password CheckBox will mask or unmask the password input EditText
+                CheckBox checkbox = (CheckBox) dialog.getCustomView().findViewById(R.id.showPassword);
+                checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        passwordInput.setInputType(!isChecked ? InputType.TYPE_TEXT_VARIATION_PASSWORD : InputType.TYPE_CLASS_TEXT);
+                        passwordInput.setTransformationMethod(!isChecked ? PasswordTransformationMethod.getInstance() : null);
+                        passwordInput.setSelection(passwordInput.getText().length());
+                    }
+                });
+                MDTintHelper.setTint(checkbox, ContextCompat.getColor(ConnectionListActivity.this, R.color.myAccentColor));
+                MDTintHelper.setTint(passwordInput, ContextCompat.getColor(ConnectionListActivity.this, R.color.myAccentColor));
+                dialog.show();
+                positiveAction.setEnabled(false); // disabled by default
+            }
+        });
+
+
         addConnectionMenu.setOnMenuButtonClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addConnectionMenu.toggle(true);
             }
         });
+
     }
     /**
      * Initializing collapsing toolbar
@@ -183,12 +247,10 @@ public class ConnectionListActivity extends AppCompatActivity {
     public class ConnectionsAdapter extends RecyclerView.Adapter<ConnectionsAdapter.MyViewHolder> {
         private Context mContext;
         private ConnectionList connectionList;
-        private int currentConnectionPosition;
 
         public ConnectionsAdapter(Context mContext, ConnectionList connectionList) {
             this.mContext = mContext;
             this.connectionList = connectionList;
-            this.currentConnectionPosition = this.connectionList.getUsedPosition();
         }
 
         @Override
@@ -204,11 +266,10 @@ public class ConnectionListActivity extends AppCompatActivity {
             holder.connection_name.setText(connection.getName());
             holder.connection_ip.setText(connection.getAddress());
             Glide.with(mContext).load(connection.getThumbnail()).into(holder.connection_thumbnail);
-
             holder.overflow.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    showPopupMenu(holder.overflow, position);
+                    showPopupMenu(holder.overflow, holder.getAdapterPosition());
                 }
             });
 
@@ -232,6 +293,7 @@ public class ConnectionListActivity extends AppCompatActivity {
 
             public TextView connection_name, connection_ip;
             public ImageView connection_thumbnail, overflow;
+            private MyViewHolder theHolder;
 
             public MyViewHolder(View view) {
                 super(view);
@@ -239,12 +301,11 @@ public class ConnectionListActivity extends AppCompatActivity {
                 connection_ip = (TextView) view.findViewById(R.id.connection_ip);
                 connection_thumbnail = (ImageView) view.findViewById(R.id.connection_thumbnail);
                 overflow = (ImageView) view.findViewById(R.id.overflow);
+                theHolder = this;
             }
         }
         class MyMenuItemClickListener implements PopupMenu.OnMenuItemClickListener {
-
             int position;
-
             public MyMenuItemClickListener(int position) {
                 this.position = position;
             }
@@ -253,27 +314,42 @@ public class ConnectionListActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.action_remove:
-                        Snackbar snackbar = Snackbar
-                                .make(findViewById(R.id.main_content), "Message is deleted", Snackbar.LENGTH_LONG)
+                        final Connection removedConnection = connectionList.get(position);
+                        Log.e("GTA_DEBUG", "Deleting Position " + position);
+                        notifyItemRemoved(position);
+                        connectionList.remove(position);
+
+                        //notifyDataSetChanged();
+
+                        final Snackbar removeNotifierSnackbar = Snackbar
+                                .make(findViewById(R.id.main_content), removedConnection.getName() + " is deleted" + position, Snackbar.LENGTH_LONG)
                                 .setAction("UNDO", new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        Snackbar snackbar1 = Snackbar.make(findViewById(R.id.main_content), "Message is restored!", Snackbar.LENGTH_SHORT);
-                                        snackbar1.show();
+                                        Log.e("GTA_DEBUG", "Adding Back to " + position);
+                                        connectionList.add(position, removedConnection);
+                                        //notifyDataSetChanged();
+                                        notifyItemInserted(position);
+
+
+                                        Snackbar restoreNotifierSnackbar = Snackbar.make(findViewById(R.id.main_content), removedConnection.getName() + " is restored!" + position, Snackbar.LENGTH_SHORT);
+                                        ((TextView) restoreNotifierSnackbar.getView().findViewById(android.support.design.R.id.snackbar_text)).setTextColor(Color.YELLOW);
+                                        restoreNotifierSnackbar.show();
+                                        // View sb=restoreNotifierSnackbar.getView();
                                     }
                                 });
-// Changing message text color
-                        snackbar.setActionTextColor(Color.RED);
-
-// Changing action button text color
-                        View sbView = snackbar.getView();
-                        TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
-                        textView.setTextColor(Color.YELLOW);
-                        snackbar.show();
+                        removeNotifierSnackbar.setActionTextColor(Color.RED);
+                        ((TextView) removeNotifierSnackbar.getView().findViewById(android.support.design.R.id.snackbar_text)).setTextColor(Color.YELLOW);
+                        removeNotifierSnackbar.show();
+                        //View sbView = removeNotifierSnackbar.getView();
+                        //TextView textView = (TextView) removeNotifierSnackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
                         return true;
                     case R.id.action_edit:
+                        final ConnectionWifi editedConnection = (ConnectionWifi) connectionList.get(position);
+                        editedConnection.setHost("AS");
+                        adapter.notifyItemChanged(position);
                         //Toast.makeText(mContext, connectionList.get(0).getName(), Toast.LENGTH_SHORT).show();
-                        Snackbar.make(findViewById(R.id.main_content), "Hello Snackbar", Snackbar.LENGTH_LONG).show();
+
                         return true;
                     default:
                 }
