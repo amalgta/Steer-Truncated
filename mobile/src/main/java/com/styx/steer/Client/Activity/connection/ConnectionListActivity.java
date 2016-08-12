@@ -3,11 +3,13 @@ package com.styx.steer.Client.Activity.connection;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -251,35 +253,27 @@ public class ConnectionListActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.action_remove:
-                        //   Toast.makeText(mContext, connectionList.get(position).getName(), Toast.LENGTH_SHORT).show();
-                        new MaterialDialog.Builder(ConnectionListActivity.this)
-                                .title("Delete")
-                                .content("Remove connection configuration ?")
-                                .positiveText("REMOVE")
-                                .negativeText("CANCEL")
-                                .showListener(new DialogInterface.OnShowListener() {
+                        Snackbar snackbar = Snackbar
+                                .make(findViewById(R.id.main_content), "Message is deleted", Snackbar.LENGTH_LONG)
+                                .setAction("UNDO", new View.OnClickListener() {
                                     @Override
-                                    public void onShow(DialogInterface dialog) {
-                                        connectionList.remove(position);
-                                        connectionList.save();
-                                        adapter.notifyItemRemoved(position);
+                                    public void onClick(View view) {
+                                        Snackbar snackbar1 = Snackbar.make(findViewById(R.id.main_content), "Message is restored!", Snackbar.LENGTH_SHORT);
+                                        snackbar1.show();
                                     }
-                                })
-                                .cancelListener(new DialogInterface.OnCancelListener() {
-                                    @Override
-                                    public void onCancel(DialogInterface dialog) {
-                                    }
-                                })
-                                .dismissListener(new DialogInterface.OnDismissListener() {
-                                    @Override
-                                    public void onDismiss(DialogInterface dialog) {
-                                    }
-                                })
-                                .show();
+                                });
+// Changing message text color
+                        snackbar.setActionTextColor(Color.RED);
+
+// Changing action button text color
+                        View sbView = snackbar.getView();
+                        TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+                        textView.setTextColor(Color.YELLOW);
+                        snackbar.show();
                         return true;
                     case R.id.action_edit:
                         //Toast.makeText(mContext, connectionList.get(0).getName(), Toast.LENGTH_SHORT).show();
-                        //Snackbar.make(findViewById(R.id.test_ID), "Hello Snackbar", Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(findViewById(R.id.main_content), "Hello Snackbar", Snackbar.LENGTH_LONG).show();
                         return true;
                     default:
                 }

@@ -93,6 +93,7 @@
     </RelativeLayout>
 
     <com.github.clans.fab.FloatingActionMenu
+        app:layout_behavior="com.styx.steer.Client.util.FloatingActionMenuBehavior"
         android:id="@+id/menu_red"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -3,6 +3,7 @@
 
     <!-- GTA Additions -->
     <string name="connection_subtitle">Configure connections to host device</string>
+    <string name="appbar_scrolling_view_behaviour" translatable="false">com.styx.steer.Client.Activity.connection.FloatingActionMenuBehaviour$FloatingActionMenuBehaviour</string>
 
 
     <string name="app_name">Steer</string>
