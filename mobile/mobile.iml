@@ -147,6 +147,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.firebase/firebase-messaging/9.4.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.firebase/firebase-storage-common/9.4.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.firebase/firebase-storage/9.4.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.jaredrummler/material-spinner/1.1.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.nispok/snackbar/2.7.3/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.rengwuxian.materialedittext/library/1.7.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/me.zhanghai.android.materialprogressbar/library/1.1.7/jars" />
@@ -200,6 +201,7 @@
     <orderEntry type="library" exported="" name="play-services-auth-9.4.0" level="project" />
     <orderEntry type="library" exported="" name="MaterialDesignLibrary-1.6" level="project" />
     <orderEntry type="library" exported="" name="fab-1.6.4" level="project" />
+    <orderEntry type="library" exported="" name="material-spinner-1.1.0" level="project" />
     <orderEntry type="library" exported="" name="snackbar-2.7.3" level="project" />
     <orderEntry type="library" exported="" name="play-services-ads-9.4.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-location-9.4.0" level="project" />
@@ -240,6 +242,5 @@
     <orderEntry type="library" exported="" name="firebase-analytics-9.4.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-tagmanager-9.4.0" level="project" />
     <orderEntry type="module" module-name="FloatingMenu" exported="" />
-    <orderEntry type="library" exported="" name="android-android-24" level="project" />
   </component>
 </module>

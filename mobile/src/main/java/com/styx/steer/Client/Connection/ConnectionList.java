@@ -59,7 +59,7 @@ public class ConnectionList
 	}
 
 	/* Change Immediately*/
-	public Connection gtaAdd(int type) {
+	public Connection newConnection(int type) {
 		Connection connection = null;
 
 		switch (type) {

@@ -1,5 +1,7 @@
 package com.styx.steer.Client.Activity.connection;
 
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -21,7 +23,6 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -40,36 +41,71 @@ import com.afollestad.materialdialogs.internal.MDTintHelper;
 import com.bumptech.glide.Glide;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
+import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.styx.steer.Client.App.Steer;
 import com.styx.steer.Client.Connection.Connection;
+import com.styx.steer.Client.Connection.ConnectionBluetooth;
 import com.styx.steer.Client.Connection.ConnectionList;
 import com.styx.steer.Client.Connection.ConnectionWifi;
 import com.styx.steer.Client.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Set;
 
 public class ConnectionListActivity extends AppCompatActivity {
+    final int mFloatingActionMenuDelay = 400;
     private RecyclerView recyclerView;
     private ConnectionsAdapter adapter;
     private ConnectionList connectionList;
     private Steer mApplication;
     private Handler mUiHandler = new Handler();
-
-
     private FloatingActionMenu addConnectionMenu;
     private FloatingActionButton addWifi;
     private FloatingActionButton addBluetooth;
 
-    private void validate(ArrayList<EditText> validateList, View buttonView) {
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (connectionList != null) {
+            connectionList.save();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (connectionList != null) {
+            adapter.notifyDataSetChanged();
+        }
+        if (connectionList.getCount() == 0) {
+            mUiHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (!addConnectionMenu.isOpened())
+                        addConnectionMenu.toggle(true);
+                }
+            }, mFloatingActionMenuDelay);
+
+        }
+    }
+
+    private void validate(ArrayList<Object> validateList, View buttonView) {
         boolean FLAG = true;
-        for (EditText currentText : validateList) {
-            if (!(currentText.getText().toString().trim().length() > 0)) {
-                FLAG = false;
-                break;
+        for (Object currentText : validateList) {
+            if (currentText instanceof EditText) {
+                if (!(((EditText) currentText).getText().toString().trim().length() > 0)) {
+                    FLAG = false;
+                    break;
+                }
+            } else if (currentText instanceof mConnection) {
+                if ((((mConnection) currentText).getHost() != null) && (!(((mConnection) currentText).getHost().trim().length() > 0))) {
+                    FLAG = false;
+                    break;
             }
         }
         buttonView.setEnabled(FLAG);
+    }
     }
 
     private void editWifiConnection(final ConnectionWifi editedConnection, final int position) {
@@ -98,7 +134,6 @@ public class ConnectionListActivity extends AppCompatActivity {
                         if (add) {
                             connectionList.add(editedConnection);
                             adapter.notifyItemInserted(connectionList.getCount());
-                            //Daivame porukkane
                             addConnectionMenu.toggle(true);
                         } else {
                             adapter.notifyItemChanged(position);
@@ -110,7 +145,9 @@ public class ConnectionListActivity extends AppCompatActivity {
         final EditText connection_password = (EditText) dialog.getCustomView().findViewById(R.id.connection_password);
         final EditText connection_address = (EditText) dialog.getCustomView().findViewById(R.id.connection_address);
         final EditText connection_port = (EditText) dialog.getCustomView().findViewById(R.id.connection_port);
-        final ArrayList<EditText> validateList = new ArrayList<>(Arrays.asList(connectionName, connection_password, connection_address, connection_port));
+
+
+        final ArrayList<Object> validateList = new ArrayList<Object>(Arrays.asList(connectionName, connection_password, connection_address, connection_port));
         positiveAction.setEnabled(false); // disabled by default
         if (!add) {
             connectionName.setText(editedConnection.getName());
@@ -186,8 +223,131 @@ public class ConnectionListActivity extends AppCompatActivity {
         });
         MDTintHelper.setTint(checkbox, ContextCompat.getColor(ConnectionListActivity.this, R.color.myAccentColor));
         MDTintHelper.setTint(connection_password, ContextCompat.getColor(ConnectionListActivity.this, R.color.myAccentColor));
+        connectionName.setSelection(connectionName.getText().length());
+        connection_password.setSelection(connection_password.getText().length());
+        connection_address.setSelection(connection_address.getText().length());
+        connection_port.setSelection(connection_port.getText().length());
         dialog.show();
     }
+
+    private void editBluetoothConnection(final ConnectionBluetooth editedConnection, final int position) {
+        final boolean add = (position == connectionList.getCount());
+        final mConnection connection_host = new mConnection();
+        String title, positiveText;
+        if (add) {
+            title = "Add Connection";
+            positiveText = "ADD";
+        } else {
+            title = "Edit Connection";
+            positiveText = "EDIT";
+        }
+
+        MaterialDialog dialog = new MaterialDialog.Builder(ConnectionListActivity.this)
+                .title(title)
+                .customView(R.layout.dialog_addbluetoothconnection, true)
+                .positiveText(positiveText)
+                .negativeText(android.R.string.cancel)
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        editedConnection.setName(((EditText) dialog.getCustomView().findViewById(R.id.connection_name)).getText().toString());
+                        editedConnection.setPassword(((EditText) dialog.getCustomView().findViewById(R.id.connection_password)).getText().toString());
+                        editedConnection.setAddress(connection_host.getHost().toString());
+                        if (add) {
+                            connectionList.add(editedConnection);
+                            adapter.notifyItemInserted(connectionList.getCount());
+                            addConnectionMenu.toggle(true);
+                        } else {
+                            adapter.notifyItemChanged(position);
+                        }
+                    }
+                }).build();
+        final View positiveAction = dialog.getActionButton(DialogAction.POSITIVE);
+        final EditText connectionName = (EditText) dialog.getCustomView().findViewById(R.id.connection_name);
+        final EditText connection_password = (EditText) dialog.getCustomView().findViewById(R.id.connection_password);
+
+
+
+        /* Bluetooth */
+        final BluetoothAdapter mBtAdapter = BluetoothAdapter.getDefaultAdapter();
+        Set<BluetoothDevice> pairedDevices = mBtAdapter.getBondedDevices();
+        final ArrayList<String> mBluetoothDevices = new ArrayList<>();
+        if (pairedDevices.size() > 0) {
+            for (BluetoothDevice device : pairedDevices) {
+                mBluetoothDevices.add(device.getName() + "\n" + device.getAddress());
+            }
+        }
+
+        final MaterialSpinner connection_device = (MaterialSpinner) dialog.getCustomView().findViewById(R.id.connection_device);
+        connection_device.setItems(mBluetoothDevices);
+        if (mBluetoothDevices.size() == 0) {
+
+        }
+        connection_device.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+                connection_host.setHost(mBluetoothDevices.get(position).substring(mBluetoothDevices.get(position).length() - 17));
+            }
+        });
+
+        final ArrayList<Object> validateList = new ArrayList<>(Arrays.asList(connectionName, connection_password, connection_host));
+        positiveAction.setEnabled(false); // disabled by default
+        if (!add) {
+            connectionName.setText(editedConnection.getName());
+            connection_password.setText(editedConnection.getPassword());
+            connection_device.setSelectedIndex(2);
+            //  connection_address.setText(editedConnection.getHost());
+            //  connection_port.setText(String.valueOf(editedConnection.getPort()));
+            validate(validateList, positiveAction);
+        }
+        connectionName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                validate(validateList, positiveAction);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+        connection_password.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                validate(validateList, positiveAction);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+        CheckBox checkbox = (CheckBox) dialog.getCustomView().findViewById(R.id.showPassword);
+        checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                connection_password.setInputType(!isChecked ? InputType.TYPE_TEXT_VARIATION_PASSWORD : InputType.TYPE_CLASS_TEXT);
+                connection_password.setTransformationMethod(!isChecked ? PasswordTransformationMethod.getInstance() : null);
+                connection_password.setSelection(connection_password.getText().length());
+            }
+        });
+        MDTintHelper.setTint(checkbox, ContextCompat.getColor(ConnectionListActivity.this, R.color.myAccentColor));
+        MDTintHelper.setTint(connection_password, ContextCompat.getColor(ConnectionListActivity.this, R.color.myAccentColor));
+        connectionName.setSelection(connectionName.getText().length());
+        connection_password.setSelection(connection_password.getText().length());
+        dialog.show();
+
+        // connection_address.setSelection(connection_address.getText().length());
+        // connection_port.setSelection(connection_port.getText().length());
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -218,17 +378,16 @@ public class ConnectionListActivity extends AppCompatActivity {
         addBluetooth = (FloatingActionButton) findViewById(R.id.addBluetooth);
         addConnectionMenu.hideMenuButton(false);
         addConnectionMenu.setClosedOnTouchOutside(true);
-        int delay = 400;
         mUiHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 addConnectionMenu.showMenuButton(true);
             }
-        }, delay);
+        }, mFloatingActionMenuDelay);
         addBluetooth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                editBluetoothConnection((ConnectionBluetooth) connectionList.newConnection(Connection.BLUETOOTH), connectionList.getCount());
             }
         });
 
@@ -236,7 +395,7 @@ public class ConnectionListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(ConnectionListActivity.this, "ASD", Toast.LENGTH_SHORT).show();
-                editWifiConnection((ConnectionWifi) connectionList.gtaAdd(Connection.WIFI), connectionList.getCount());
+                editWifiConnection((ConnectionWifi) connectionList.newConnection(Connection.WIFI), connectionList.getCount());
             }
         });
 
@@ -248,7 +407,9 @@ public class ConnectionListActivity extends AppCompatActivity {
             }
         });
 
+
     }
+
     /**
      * Initializing collapsing toolbar
      * Will show and hide the toolbar title on scroll
@@ -287,6 +448,22 @@ public class ConnectionListActivity extends AppCompatActivity {
     private int dpToPx(int dp) {
         Resources r = getResources();
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
+    }
+
+    class mConnection {
+        String host;
+
+        mConnection() {
+            host = new String();
+        }
+
+        public String getHost() {
+            return host;
+        }
+
+        public void setHost(String host) {
+            this.host = host;
+        }
     }
 
     /**
@@ -398,7 +575,6 @@ public class ConnectionListActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.action_remove:
                         final Connection removedConnection = connectionList.get(position);
-                        Log.e("GTA_DEBUG", "Deleting Position " + position);
                         notifyItemRemoved(position);
                         connectionList.remove(position);
 
@@ -409,7 +585,6 @@ public class ConnectionListActivity extends AppCompatActivity {
                                 .setAction("UNDO", new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        Log.e("GTA_DEBUG", "Adding Back to " + position);
                                         connectionList.add(position, removedConnection);
                                         //notifyDataSetChanged();
                                         notifyItemInserted(position);
@@ -426,9 +601,12 @@ public class ConnectionListActivity extends AppCompatActivity {
                         //TextView textView = (TextView) removeNotifierSnackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
                         return true;
                     case R.id.action_edit:
-                        final ConnectionWifi editedConnection = (ConnectionWifi) connectionList.get(position);
-                        editWifiConnection(editedConnection, position);
-                        //Toast.makeText(mContext, connectionList.get(0).getName(), Toast.LENGTH_SHORT).show();
+                        final Connection editedConnection = connectionList.get(position);
+                        if (editedConnection instanceof ConnectionWifi) {
+                            editWifiConnection((ConnectionWifi) editedConnection, position);
+                        } else {
+                            editBluetoothConnection((ConnectionBluetooth) editedConnection, position);
+                        }
 
                         return true;
                     default:
