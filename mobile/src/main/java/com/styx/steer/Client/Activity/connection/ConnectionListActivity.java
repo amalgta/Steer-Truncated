@@ -23,6 +23,7 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -93,13 +94,14 @@ public class ConnectionListActivity extends AppCompatActivity {
     private void validate(ArrayList<Object> validateList, View buttonView) {
         boolean FLAG = true;
         for (Object currentText : validateList) {
+            Log.e("GTA_DEBUG", currentText.toString());
             if (currentText instanceof EditText) {
                 if (!(((EditText) currentText).getText().toString().trim().length() > 0)) {
                     FLAG = false;
                     break;
                 }
             } else if (currentText instanceof mConnection) {
-                if ((((mConnection) currentText).getHost() != null) && (!(((mConnection) currentText).getHost().trim().length() > 0))) {
+                if ((((mConnection) currentText).getHost() == null)) {
                     FLAG = false;
                     break;
             }
@@ -312,6 +314,7 @@ public class ConnectionListActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
+
             }
         });
         connection_password.addTextChangedListener(new TextWatcher() {
@@ -452,10 +455,6 @@ public class ConnectionListActivity extends AppCompatActivity {
 
     class mConnection {
         String host;
-
-        mConnection() {
-            host = new String();
-        }
 
         public String getHost() {
             return host;
