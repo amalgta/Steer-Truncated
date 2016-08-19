@@ -435,7 +435,7 @@ public class ConnectionListActivity extends AppCompatActivity {
                     scrollRange = appBarLayout.getTotalScrollRange();
                 }
                 if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbar.setTitle(getString(R.string.app_name));
+                    collapsingToolbar.setTitle(getString(R.string.connection));
                     isShow = true;
                 } else if (isShow) {
                     collapsingToolbar.setTitle(" ");

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -8,97 +7,21 @@
         android:id="@+id/imageView1"
         android:layout_width="85dp"
         android:layout_height="76dp"
-        android:layout_gravity="center_horizontal"
-        android:src="@mipmap/app_icon"
-        android:layout_marginTop="15dp"
         android:layout_below="@+id/textVie"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:src="@mipmap/app_icon" />
 
     <TextView
         android:id="@+id/textVie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/ver"
-        android:textColor="@color/myTextPrimaryColor"
-        android:textStyle="bold"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
-
-    <TextView
-        android:id="@+id/textVie1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/dev"
-        android:textColor="@color/myTextPrimaryColor"
-        android:textStyle="bold"
-        android:layout_below="@+id/imageView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
-
-    <TextView
-        android:id="@+id/con"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:text="@string/con"
-        android:textColor="@color/myTextPrimaryColor"
-        android:layout_below="@+id/textVie1"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:id="@+id/site"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:textStyle="bold"
-        android:autoLink="web"
-        android:text="@string/site"
+        android:text="@string/ver"
         android:textColor="@color/myTextPrimaryColor"
-        android:layout_below="@+id/con"
-        android:layout_centerHorizontal="true" />
-
-    <com.gc.materialdesign.views.ButtonFloat
-        android:id="@+id/mail"
-        android:layout_width="@dimen/float_size"
-        android:layout_height="@dimen/float_size"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="24dp"
-        android:layout_marginBottom="44dp"
-        materialdesign:iconDrawable="@drawable/gmail"
-        materialdesign:iconSize="100dp"
-        android:onClick="mail"
-        materialdesign:animate="true"
-        android:layout_gravity="left|bottom" />
-
-    <com.gc.materialdesign.views.ButtonFloat
-        android:id="@+id/fb"
-        android:layout_width="@dimen/float_size"
-        android:layout_height="@dimen/float_size"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="24dp"
-        android:layout_marginBottom="44dp"
-        materialdesign:iconDrawable="@drawable/facebook"
-        materialdesign:iconSize="100dp"
-        android:onClick="facebook"
-        materialdesign:animate="true"
-        android:layout_gravity="center|bottom" />
-
-    <com.gc.materialdesign.views.ButtonFloat
-        android:id="@+id/skype"
-        android:layout_width="@dimen/float_size"
-        android:layout_height="@dimen/float_size"
-        materialdesign:iconDrawable="@drawable/skype"
-        materialdesign:iconSize="100dp"
-        android:onClick="skype"
-        materialdesign:animate="true"
-        android:layout_gravity="right|bottom"
-        android:layout_alignTop="@+id/mail"
-        android:layout_centerHorizontal="true" />
+        android:textStyle="bold" />
 
 </RelativeLayout>
