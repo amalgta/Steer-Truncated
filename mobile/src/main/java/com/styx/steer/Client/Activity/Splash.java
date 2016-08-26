@@ -9,7 +9,6 @@ import com.styx.steer.Client.R;
 public class Splash extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
         Thread timer = new Thread() {
