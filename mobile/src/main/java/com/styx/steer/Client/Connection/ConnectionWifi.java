@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
-import com.styx.steer.Client.Activity.connection.ConnectionWifiEditActivity;
 import com.styx.steer.Client.App.Steer;
 import com.styx.steer.Client.R;
 import com.styx.steer.Protocol.SteerConnection;
@@ -25,7 +24,6 @@ public class ConnectionWifi extends Connection
 		super();
 		this.host = "";
 		this.port = SteerConnectionTcp.DEFAULT_PORT;
-        this.thumbnail = R.drawable.album1;
         //this.address=getHost()+":"+this.port;
     }
 
@@ -51,12 +49,6 @@ public class ConnectionWifi extends Connection
 		editor.putString("connection_" + position + "_host", this.host);
 		
 		editor.putInt("connection_" + position + "_port", this.port);
-	}
-	
-	public void edit(Context context)
-	{
-		Intent intent = new Intent(context, ConnectionWifiEditActivity.class);
-		this.edit(context, intent);
 	}
 	
 	public SteerConnection connect(Steer application) throws IOException

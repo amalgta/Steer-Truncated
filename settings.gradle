@@ -1,1 +1,1 @@
-include ':steerprotocol', ':FloatingMenu', ':mobile', ':steerprotocol', ':steerserver'
+include ':steerprotocol', ':mobile', ':steerprotocol', ':steerserver'

@@ -27,14 +27,10 @@ repositories {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.afollestad.material-dialogs:core:0.9.0.0'
-
     compile('com.rengwuxian.materialedittext:library:1.7.1') {
         exclude group: 'com.nineoldandroids'
     }
     //compile project(':materialDesign')
-    compile project(':FloatingMenu')
-
-
     compile 'com.android.support:appcompat-v7:24.1.1'
     compile 'com.nispok:snackbar:2.7.3'
     compile 'com.google.android.gms:play-services:9.4.0'
@@ -50,5 +46,5 @@ dependencies {
     compile 'com.google.android.gms:play-services-auth:9.4.0'
     compile 'com.github.clans:fab:1.6.4'
     compile 'com.getbase:floatingactionbutton:1.10.1'
-
+    compile 'com.oguzdev:CircularFloatingActionMenu:1.0.2'
 }

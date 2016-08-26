@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
-import com.styx.steer.Client.Activity.connection.ConnectionBluetoothEditActivity;
 import com.styx.steer.Client.App.Steer;
 import com.styx.steer.Client.Protocol.bluetooth.SteerConnectionBluetooth;
 import com.styx.steer.Client.R;
@@ -18,12 +17,13 @@ public class ConnectionBluetooth extends Connection
 {
 	private static final long serialVersionUID = 1L;
 	private String address;
+    private int thumbnail=R.drawable.album1;
 	
 	public ConnectionBluetooth()
 	{
 		super();
 		this.address = "";
-        this.thumbnail = R.drawable.album1;
+
     }
 
 	public static ConnectionBluetooth load(SharedPreferences preferences, int position)
@@ -50,14 +50,9 @@ public class ConnectionBluetooth extends Connection
 
         editor.putString("connection_" + position + "_address", this.address);
     }
-	
-	public void edit(Context context)
-	{
-		Intent intent = new Intent(context, ConnectionBluetoothEditActivity.class);
-		this.edit(context, intent);
-	}
 
     public SteerConnection connect(Steer application) throws IOException {
 		return SteerConnectionBluetooth.create(application, this.address);
 	}
+
 }

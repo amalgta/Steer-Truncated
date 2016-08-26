@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
-import com.styx.steer.Client.Activity.connection.ConnectionEditActivity;
 import com.styx.steer.Client.App.Steer;
 import com.styx.steer.Protocol.SteerConnection;
 
@@ -19,8 +18,6 @@ public abstract class Connection implements Comparable<Connection>, Serializable
 	public static final int WIFI = 0;
 	public static final int BLUETOOTH = 1;
     private static final long serialVersionUID = 1L;
-    // protected String address;
-    protected int thumbnail;
     private String name;
 	private String password;
 
@@ -65,19 +62,8 @@ public abstract class Connection implements Comparable<Connection>, Serializable
 	}
 	
 	public abstract SteerConnection connect(Steer application) throws IOException;
-	
-	public abstract void edit(Context context);
-	
-	protected void edit(Context context, Intent intent)
-	{
-		ConnectionEditActivity.connectionParam = this;
-		context.startActivity(intent);
-	}
 
     //GTA
-    public int getThumbnail() {
-        return thumbnail;
-    }
 
     public String getName()
 	{

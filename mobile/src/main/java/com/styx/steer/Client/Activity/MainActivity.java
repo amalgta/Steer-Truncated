@@ -14,7 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.styx.steer.Client.Activity.connection.ConnectionListActivity1;
+import com.styx.steer.Client.Activity.connection.ConnectionListActivity;
 import com.styx.steer.Client.Activity.drawer.NsMenuAdapter;
 import com.styx.steer.Client.Activity.drawer.NsMenuItemModel;
 import com.styx.steer.Client.R;
@@ -180,7 +180,7 @@ public abstract class MainActivity extends AppCompatActivity
                     startActivity(a);
                     break;
                 case 1:
-                    Intent ac = new Intent(MainActivity.this, ConnectionListActivity1.class);
+                    Intent ac = new Intent(MainActivity.this, ConnectionListActivity.class);
                     startActivity(ac);
                     break;
                 case 2:

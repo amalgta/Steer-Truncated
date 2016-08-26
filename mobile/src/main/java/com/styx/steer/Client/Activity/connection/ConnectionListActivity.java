@@ -41,8 +41,6 @@ public class ConnectionListActivity extends AppCompatActivity {
     private ConnectionList connectionList;
     private Steer mApplication;
     private Handler mUiHandler = new Handler();
-
-
     private FloatingActionMenu addConnectionMenu;
     private FloatingActionButton addWifi;
     private FloatingActionButton addBluetooth;
