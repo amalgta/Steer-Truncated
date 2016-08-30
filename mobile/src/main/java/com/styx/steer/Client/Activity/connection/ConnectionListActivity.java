@@ -42,7 +42,6 @@ import com.afollestad.materialdialogs.internal.MDTintHelper;
 import com.bumptech.glide.Glide;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
-import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.styx.steer.Client.App.Steer;
 import com.styx.steer.Client.Connection.Connection;
 import com.styx.steer.Client.Connection.ConnectionBluetooth;

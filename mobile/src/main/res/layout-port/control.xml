@@ -60,15 +60,13 @@
 		android:visibility="visible"
         android:weightSum="1">
 
-        <com.rengwuxian.materialedittext.MaterialEditText
+        <EditText
             android:id="@+id/textline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="Type Here to send!"
-            android:imeOptions="actionSend"
-            app:floatingLabel="highlight"
-            app:primaryColor="@color/control" />
+            android:imeOptions="actionSend" />
 
 		<Button
 		    android:id="@+id/inputBackspace"

@@ -16,9 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdView;
-import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
-import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
-import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 import com.styx.steer.Client.App.Steer;
 import com.styx.steer.Client.R;
 import com.styx.steer.Client.View.CircleImageView;
@@ -74,6 +71,7 @@ public class Shortcuts extends MainActivity implements SteerActionReceiver, Circ
     }
         else
     {
+        /*
         FrameLayout containerView = (FrameLayout) findViewById(R.id.container);
         int redActionButtonSize = getResources().getDimensionPixelSize(R.dimen.red_action_button_size);
         int redActionButtonMargin = getResources().getDimensionPixelOffset(R.dimen.action_button_margin);
@@ -85,7 +83,6 @@ public class Shortcuts extends MainActivity implements SteerActionReceiver, Circ
 
         final ImageView fabIconStar = new ImageView(this);
         fabIconStar.setImageDrawable(getResources().getDrawable(R.drawable.home_short));
-
         FloatingActionButton.LayoutParams starParams = new FloatingActionButton.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
         starParams.setMargins(redActionButtonMargin, redActionButtonMargin, redActionButtonMargin, redActionButtonMargin);
         fabIconStar.setLayoutParams(starParams);
@@ -180,7 +177,7 @@ public class Shortcuts extends MainActivity implements SteerActionReceiver, Circ
                 application.sendAction(new Combination(38));
             }
         });
-
+*/
     }
 }
     @Override
