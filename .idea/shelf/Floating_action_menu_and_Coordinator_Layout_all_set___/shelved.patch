@@ -1,0 +1,10 @@
+Index: settings.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- settings.gradle	(revision 522420ef907f9667612ec28b1ae37bb973f359af)
++++ settings.gradle	(revision )
+@@ -1,1 +1,1 @@
+-include ':steerprotocol', ':FloatingMenu', ':mobile', ':steerprotocol', ':steerserver'
++include ':steerprotocol', ':FloatingMenu', ':materialDesign', ':mobile', ':steerprotocol', ':steerserver'

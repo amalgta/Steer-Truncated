@@ -26,7 +26,6 @@ public class ConnectionWifi extends Connection
 		this.port = SteerConnectionTcp.DEFAULT_PORT;
         //this.address=getHost()+":"+this.port;
     }
-
     public static ConnectionWifi load(SharedPreferences preferences, int position) {
 		ConnectionWifi connection = new ConnectionWifi();
 

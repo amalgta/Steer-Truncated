@@ -35,7 +35,7 @@ public class ConnectionList
 			this.used = this.get(position);
 		}
 	}
-	
+
 	public void save()
 	{
 		Editor editor = this.preferences.edit();
@@ -57,7 +57,31 @@ public class ConnectionList
 	{
 		Collections.sort(this.connections);
 	}
-	
+
+	/* Change Immediately*/
+	public Connection newConnection(int type) {
+		Connection connection = null;
+
+		switch (type) {
+			case Connection.WIFI:
+				connection = new ConnectionWifi();
+				break;
+			case Connection.BLUETOOTH:
+				connection = new ConnectionBluetooth();
+				break;
+		}
+/*
+		this.connections.add(connection);
+
+		if (this.connections.size() == 1)
+		{
+			this.used = connection;
+		}
+*/
+		return connection;
+	}
+
+
 	public Connection add(int type)
 	{
 		Connection connection = null;
@@ -80,6 +104,22 @@ public class ConnectionList
 		}
 		
 		return connection;
+	}
+
+	public Connection add(Connection newConnection) {
+		this.connections.add(newConnection);
+		if (this.connections.size() == 1) {
+			this.used = newConnection;
+		}
+		return newConnection;
+	}
+
+	public Connection add(int position, Connection newConnection) {
+		this.connections.add(position, newConnection);
+		if (this.connections.size() == 1) {
+			this.used = newConnection;
+		}
+		return newConnection;
 	}
 	
 	public void remove(int position)
