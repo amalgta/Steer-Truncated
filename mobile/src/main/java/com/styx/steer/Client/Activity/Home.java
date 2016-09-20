@@ -16,9 +16,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
-import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
-import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 import com.styx.steer.Client.Activity.connection.ConnectionListActivity;
 import com.styx.steer.Client.App.Steer;
 import com.styx.steer.Client.R;
@@ -48,6 +45,7 @@ public class Home extends MainActivity implements CircleLayout.OnItemClickListen
     }
 
     public void Rotatorui() {
+        /*
         String rotator = preferences.getString("menus", "");
         if (rotator.equals("Circular")) {
             LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -182,6 +180,7 @@ public class Home extends MainActivity implements CircleLayout.OnItemClickListen
 
 
         }
+*/
     }
 
     @Override

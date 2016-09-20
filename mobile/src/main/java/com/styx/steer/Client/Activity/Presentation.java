@@ -13,9 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
-import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
-import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 import com.styx.steer.Client.App.Steer;
 import com.styx.steer.Client.R;
 import com.styx.steer.Client.View.CircleImageView;
@@ -47,6 +44,7 @@ public class Presentation extends MainActivity implements SteerActionReceiver, C
 
     public void Rotatorui()
     {
+        /*
         String rotator = preferences.getString("menus", "");
         if (rotator.equals("Circular")) {
             LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -164,6 +162,7 @@ public class Presentation extends MainActivity implements SteerActionReceiver, C
             });
 
         }
+        */
     }
 
 //    Circle Menu Methods!

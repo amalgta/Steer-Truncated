@@ -278,7 +278,7 @@ public class ConnectionListActivity extends AppCompatActivity {
                 mBluetoothDevices.add(device.getName() + "\n" + device.getAddress());
             }
         }
-
+/*
         final MaterialSpinner connection_device = (MaterialSpinner) dialog.getCustomView().findViewById(R.id.connection_device);
         connection_device.setItems(mBluetoothDevices);
         if (mBluetoothDevices.size() == 0) {
@@ -290,13 +290,13 @@ public class ConnectionListActivity extends AppCompatActivity {
                 connection_host.setHost(mBluetoothDevices.get(position).substring(mBluetoothDevices.get(position).length() - 17));
             }
         });
-
+*/
         final ArrayList<Object> validateList = new ArrayList<>(Arrays.asList(connectionName, connection_password, connection_host));
         positiveAction.setEnabled(false); // disabled by default
         if (!add) {
             connectionName.setText(editedConnection.getName());
             connection_password.setText(editedConnection.getPassword());
-            connection_device.setSelectedIndex(2);
+           // connection_device.setSelectedIndex(2);
             //  connection_address.setText(editedConnection.getHost());
             //  connection_port.setText(String.valueOf(editedConnection.getPort()));
             validate(validateList, positiveAction);
@@ -523,7 +523,7 @@ public class ConnectionListActivity extends AppCompatActivity {
             Connection connection = connectionList.get(position);
             holder.connection_name.setText(connection.getName());
             holder.connection_ip.setText(connection.getAddress());
-            Glide.with(mContext).load(connection.getThumbnail()).into(holder.connection_thumbnail);
+           // Glide.with(mContext).load(connection.getThumbnail()).into(holder.connection_thumbnail);
             holder.overflow.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
